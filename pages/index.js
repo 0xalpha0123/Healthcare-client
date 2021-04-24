@@ -1,8 +1,9 @@
+import React from "react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import Test from "../components/Test";
+import OfferList from "../src/components/OfferList";
 
 export default function Home() {
-  return <Test />;
+  return <OfferList />;
 }
 
 export const getStaticProps = async ({ locale }) => ({
