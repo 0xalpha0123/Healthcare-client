@@ -76,7 +76,7 @@ const Header = () => {
         <div className="flex">Header</div>
       </div>
       <div className="flex flex-col w-screen px-2 h-16 border-b-2 justify-center">
-        <form
+        <form className="flex flex-row"
           onSubmit={(e) => {
             e.preventDefault();
             loadOffers();
@@ -93,7 +93,6 @@ const Header = () => {
           <select
             className="border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none"
             onChange={(e) => {
-              console.log(`Wartość? ${e.target.value}`);
               setSelectedProfession(e.target.value);
               loadSpecializationsFilters();
             }}
