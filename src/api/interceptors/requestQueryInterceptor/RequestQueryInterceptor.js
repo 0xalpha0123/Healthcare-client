@@ -7,7 +7,7 @@ export const requestQueryInterceptor = () => () => async (action) => {
     return {
       ...otherActionParams,
       endpoint: `${action.endpoint}?${qs
-        .stringify(query, {skipNull: true, skipEmptyString: true})
+        .stringify(query, { skipNull: true, skipEmptyString: true })
         .replace(/%20/g, "+")}`,
     };
   }
