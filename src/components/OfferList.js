@@ -1,11 +1,17 @@
-import React, { useEffect, useState } from "react";
-import { useTranslation } from "next-i18next";
-import Layout from "./layout/Layout";
-import { useOffersContext } from "../context/offersContextController/OffersContextController";
-import { SingleOfferList } from "./offer/SingleOfferList";
+import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'next-i18next';
+import Layout from './layout/Layout';
+import { useOffersContext } from '../context/offersContextController/OffersContextController';
+import { SingleOfferList } from './offer/SingleOfferList';
+import dynamic from 'next/dynamic';
+
+import { offersMock } from './offersMock.js';
 
 const OfferList = () => {
-  const { t } = useTranslation("common");
+  const offers = offersMock.slice(0, -1);
+
+  const Map = dynamic(() => import('./Map'), { ssr: false });
+  const { t } = useTranslation('common');
 
   const offersContext = useOffersContext();
 
@@ -17,6 +23,9 @@ const OfferList = () => {
         {offersContext.offersList.map((offer) => (
           <SingleOfferList offer={offer} />
         ))}
+      </div>
+      <div style={{ height: 500, width: '100%' }} py={4}>
+        <Map offers={offers} />
       </div>
     </Layout>
   );
