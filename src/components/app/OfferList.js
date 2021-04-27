@@ -10,7 +10,7 @@ const OfferList = () => {
 
   return (
     <Layout>
-      <div className="fixed pl-4 bg-white w-full">sort by</div>
+      <div className="fixed px-4 h-10 bg-white w-full">sort by</div>
       <div className="flex mx-2 flex-col pt-8">
         {offersContext.offersList.map((offer) => (
           <SingleOfferList offer={offer} />

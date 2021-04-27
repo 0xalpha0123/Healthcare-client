@@ -110,7 +110,7 @@ const Filters = () => {
   return (
     <div className="flex flex-col px-2 h-16 justify-center">
       <form
-        className="flex flex-row"
+        className="flex flex-wrap"
         onSubmit={(e) => {
           loadOffers();
         }}
@@ -143,7 +143,6 @@ const Filters = () => {
           value={selectedProfession}
           onChange={(e) => {
             setSelectedProfession(e.target.value);
-            loadSpecializationsFilters();
           }}
           label={t("profession")}
         >
