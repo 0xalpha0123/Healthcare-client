@@ -10,14 +10,17 @@ import { StatusCodes } from "http-status-codes";
 import { NumberInput, SearchInput } from "../Input";
 import { Select } from "../Select";
 import { getUniqueLocations } from "../../../api/actions/companyActions";
+import { useTranslation } from "next-i18next";
 
 const Filters = () => {
   const offersContext = useOffersContext();
 
+  const { t } = useTranslation("common");
+
   const [titleSearch, setTitleSearch] = useState("");
   const [professionsList, setProfessionsList] = useState([]);
   const [specializationsList, setSpecializationsList] = useState([]);
-  const [locationsList, setLocationsList] = useState([])
+  const [locationsList, setLocationsList] = useState([]);
 
   const [selectedProfession, setSelectedProfession] = useState(null);
   const [selectedSpecialization, setSelectedSpecialization] = useState(null);
@@ -33,7 +36,7 @@ const Filters = () => {
       specializationId: selectedSpecialization,
       city: selectedLocation,
       salaryFrom,
-      salaryTo
+      salaryTo,
     }),
     false
   );
@@ -46,10 +49,7 @@ const Filters = () => {
     false
   );
 
-  const { query: getLocationsQuery } = useQuery(
-      getUniqueLocations(),
-      false
-  );
+  const { query: getLocationsQuery } = useQuery(getUniqueLocations(), false);
 
   useEffect(() => {
     (async () => {
@@ -64,12 +64,16 @@ const Filters = () => {
 
   useEffect(() => {
     (async () => {
-      await Promise.all([
-        loadOffers(),
-        loadSpecializationsFilters(),
-      ]);
+      await Promise.all([loadSpecializationsFilters()]);
+    })();
+  }, [selectedProfession]);
+
+  useEffect(() => {
+    (async () => {
+      await Promise.all([loadOffers()]);
     })();
   }, [selectedProfession, selectedSpecialization, selectedLocation]);
+
 
   const loadOffers = async () => {
     const { payload, status } = await getOffersQuery();
@@ -93,6 +97,7 @@ const Filters = () => {
     const { payload, status } = await getSpecializationsQuery();
     if (status === StatusCodes.OK) {
       setSpecializationsList(payload);
+      setSelectedSpecialization(null);
     }
   };
 
@@ -101,7 +106,7 @@ const Filters = () => {
     if (status === StatusCodes.OK) {
       setLocationsList(payload);
     }
-  }
+  };
 
   return (
     <div className="flex flex-col px-2 h-16 border-b-2 justify-center">
@@ -110,61 +115,69 @@ const Filters = () => {
         onSubmit={(e) => {
           loadOffers();
         }}
+        onKeyDown={(event) => {
+          if (event.key === "Enter") {
+            loadOffers();
+          }
+        }}
       >
         <SearchInput
           value={titleSearch}
           setValue={setTitleSearch}
-          placeholder={"Search"}
+          placeholder={t("search")}
         />
 
         <Select
-            onChange={(e) => {
-              setSelectedLocation(e.target.value);
-            }}
-            label={"Location"}
+          value={selectedLocation}
+          onChange={(e) => {
+            setSelectedLocation(e.target.value);
+          }}
+          label={t("location")}
         >
           {locationsList.map(({ city }) => (
-              <option key={`location-${city}`} value={city}>
-                {city}
-              </option>
+            <option key={`location-${city}`} value={city}>
+              {city}
+            </option>
           ))}
         </Select>
         <Select
-            onChange={(e) => {
-              setSelectedProfession(e.target.value);
-              loadSpecializationsFilters();
-            }}
-            label={"Profession"}
+          value={selectedProfession}
+          onChange={(e) => {
+            setSelectedProfession(e.target.value);
+            loadSpecializationsFilters();
+          }}
+          label={t("profession")}
         >
           {professionsList.map(({ id, name }) => (
-              <option key={`profession-${id}`} value={id}>
-                {name}
-              </option>
+            <option key={`profession-${id}`} value={id}>
+              {name}
+            </option>
           ))}
         </Select>
         <Select
-            onChange={(e) => {
-              e.preventDefault();
-              setSelectedSpecialization(e.target.value);
-            }}
-            label={"Specialization"}
+          value={selectedSpecialization}
+          onChange={(e) => {
+            e.preventDefault();
+            setSelectedSpecialization(e.target.value);
+          }}
+          label={t("specialization")}
         >
           {specializationsList.map(({ id, name }) => (
-              <option key={`specialization-${id}`} value={id}>
-                {name}
-              </option>
+            <option key={`specialization-${id}`} value={id}>
+              {name}
+            </option>
           ))}
         </Select>
         <NumberInput
-            value={salaryFrom}
-            placeholder={"Salary from"}
-            setValue={setSalaryFrom}
+          value={salaryFrom}
+          placeholder={t("salary-from")}
+          setValue={setSalaryFrom}
         />
 
         <NumberInput
-            value={salaryTo}
-            placeholder={"Salary to"}
-            setValue={setSalaryTo}
+          value={salaryTo}
+          placeholder={t("salary-to")}
+          setValue={setSalaryTo}
         />
       </form>
     </div>
