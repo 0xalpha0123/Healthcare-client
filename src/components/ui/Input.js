@@ -1,8 +1,8 @@
 import React from "react";
 
-export const SearchInput = ({ value, setValue, placeholder}) => (
+export const SearchInput = ({ value, setValue, placeholder }) => (
   <input
-    className="focus:outline-none w-full h-12 pl-5 text-gray-600 border border-gray-300 hover:border-gray-400 rounded-full appearance-none"
+    className="border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none"
     type="text"
     placeholder={placeholder}
     value={value}
@@ -11,19 +11,18 @@ export const SearchInput = ({ value, setValue, placeholder}) => (
 );
 
 export const NumberInput = ({ value, setValue, placeholder }) => (
-    <input
-        className="focus:outline-none w-full h-12 pl-5 pr-10 text-gray-600 border border-gray-300 hover:border-gray-400 rounded-full appearance-none"
-        type="text"
-        placeholder={placeholder}
-        value={value}
-        min="0"
-        onChange={(e) => {
-          const number = e.target.value;
+  <input
+    className="border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none"
+    type="text"
+    placeholder={placeholder}
+    value={value}
+    min="0"
+    onChange={(e) => {
+      const number = e.target.value;
 
-          if(!isNaN(number) && number >= 0) {
-            setValue(e.target.value)
-          }
-        }}
-    />
+      if (!isNaN(number) && number >= 0) {
+        setValue(e.target.value);
+      }
+    }}
+  />
 );
-

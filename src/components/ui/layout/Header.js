@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react";
 import Filters from "./Filters";
+import { Navbar } from "./Navbar";
 
 const Header = () => {
   return (
-    <nav className="fixed h-32 z-50 w-screen bg-white">
-      <div className="flex flex-col px-2 h-16 border-b-2 justify-center ">
-        <div className="flex">Header</div>
-      </div>
+    <div className="fixed h-32 z-50 w-screen bg-white">
+      <Navbar />
       <Filters />
-    </nav>
+    </div>
   );
 };
 

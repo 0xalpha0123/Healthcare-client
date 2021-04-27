@@ -1,3 +1,8 @@
 {
-  "test": "Test"
+  "search": "Szukaj",
+  "location": "Lokalizacja",
+  "profession": "Profesja",
+  "specialization": "Specjalizacja",
+  "salary-from": "Wynagrodzenie od",
+  "salary-to": "Wynagrodzenie do"
 }
