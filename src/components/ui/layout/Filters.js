@@ -1,15 +1,15 @@
-import { useOffersContext } from "../../context/offersContextController/OffersContextController";
+import { useOffersContext } from "../../../context/offersContextController/OffersContextController";
 import React, { useEffect, useState } from "react";
 import { useQuery } from "react-fetching-library";
 import {
   getOffersAction,
   getProfessionsAction,
   getSpecializationsAction,
-} from "../../api/actions/offerActions";
+} from "../../../api/actions/offerActions";
 import { StatusCodes } from "http-status-codes";
-import { Input, InputNumber } from "../ui/Input";
-import { Select } from "../ui/Select";
-import { getUniqueLocations } from "../../api/actions/companyActions";
+import { NumberInput, SearchInput } from "../Input";
+import { Select } from "../Select";
+import { getUniqueLocations } from "../../../api/actions/companyActions";
 
 const Filters = () => {
   const offersContext = useOffersContext();
@@ -21,17 +21,19 @@ const Filters = () => {
 
   const [selectedProfession, setSelectedProfession] = useState(null);
   const [selectedSpecialization, setSelectedSpecialization] = useState(null);
-  const [selectedLocation, setSelectedLocation] = useState("");
+  const [selectedLocation, setSelectedLocation] = useState(null);
 
   const [salaryFrom, setSalaryFrom] = useState(0);
-  const [salaryTo, setSalaryTo] = useState(0);
+  const [salaryTo, setSalaryTo] = useState(20000);
 
   const { query: getOffersQuery } = useQuery(
     getOffersAction({
       title: titleSearch,
       professionId: selectedProfession,
       specializationId: selectedSpecialization,
-      city: selectedLocation
+      city: selectedLocation,
+      salaryFrom,
+      salaryTo
     }),
     false
   );
@@ -106,11 +108,10 @@ const Filters = () => {
       <form
         className="flex flex-row"
         onSubmit={(e) => {
-          e.preventDefault();
           loadOffers();
         }}
       >
-        <Input
+        <SearchInput
           value={titleSearch}
           setValue={setTitleSearch}
           placeholder={"Search"}
@@ -128,42 +129,39 @@ const Filters = () => {
               </option>
           ))}
         </Select>
-
         <Select
-          onChange={(e) => {
-            setSelectedProfession(e.target.value);
-            loadSpecializationsFilters();
-          }}
-          label={"Profession"}
+            onChange={(e) => {
+              setSelectedProfession(e.target.value);
+              loadSpecializationsFilters();
+            }}
+            label={"Profession"}
         >
           {professionsList.map(({ id, name }) => (
-            <option key={`profession-${id}`} value={id}>
-              {name}
-            </option>
+              <option key={`profession-${id}`} value={id}>
+                {name}
+              </option>
           ))}
         </Select>
-
         <Select
-          onChange={(e) => {
-            e.preventDefault();
-            setSelectedSpecialization(e.target.value);
-          }}
-          label={"Specialization"}
+            onChange={(e) => {
+              e.preventDefault();
+              setSelectedSpecialization(e.target.value);
+            }}
+            label={"Specialization"}
         >
           {specializationsList.map(({ id, name }) => (
-            <option key={`specialization-${id}`} value={id}>
-              {name}
-            </option>
+              <option key={`specialization-${id}`} value={id}>
+                {name}
+              </option>
           ))}
         </Select>
-
-        <InputNumber
+        <NumberInput
             value={salaryFrom}
             placeholder={"Salary from"}
             setValue={setSalaryFrom}
         />
 
-        <InputNumber
+        <NumberInput
             value={salaryTo}
             placeholder={"Salary to"}
             setValue={setSalaryTo}

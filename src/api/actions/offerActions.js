@@ -5,7 +5,7 @@ export function getAgreementTypesAction() {
   };
 }
 
-export function getOffersAction({ title, professionId, specializationId, city }) {
+export function getOffersAction({ title, professionId, specializationId, city, salaryFrom, salaryTo }) {
   return {
     method: "GET",
     endpoint: "/offers",
@@ -13,7 +13,9 @@ export function getOffersAction({ title, professionId, specializationId, city })
       title,
       profession_id: professionId,
       specialization_id: specializationId,
-      city
+      city,
+      salary_to: salaryTo,
+      salary_from: salaryFrom
     },
   };
 }

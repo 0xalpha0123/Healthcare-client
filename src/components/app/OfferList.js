@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "next-i18next";
-import Layout from "./layout/Layout";
-import { useOffersContext } from "../context/offersContextController/OffersContextController";
-import { SingleOfferList } from "./offer/SingleOfferList";
+import Layout from "../ui/layout/Layout";
+import { useOffersContext } from "../../context/offersContextController/OffersContextController";
+import { SingleOfferList } from "../offer/SingleOfferList";
 
 const OfferList = () => {
   const { t } = useTranslation("common");
