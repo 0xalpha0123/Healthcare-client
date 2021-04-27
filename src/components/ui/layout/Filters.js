@@ -74,7 +74,6 @@ const Filters = () => {
     })();
   }, [selectedProfession, selectedSpecialization, selectedLocation]);
 
-
   const loadOffers = async () => {
     const { payload, status } = await getOffersQuery();
     if (status === StatusCodes.OK) {
@@ -109,7 +108,7 @@ const Filters = () => {
   };
 
   return (
-    <div className="flex flex-col px-2 h-16 border-b-2 justify-center">
+    <div className="flex flex-col px-2 h-16 justify-center">
       <form
         className="flex flex-row"
         onSubmit={(e) => {
