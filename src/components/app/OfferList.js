@@ -1,12 +1,23 @@
-import React, { useEffect } from "react";
-import Layout from "../ui/layout/Layout";
-import { useOffersContext } from "../../context/offersContextController/OffersContextController";
-import { SingleOfferList } from "../offer/SingleOfferList";
+import React, { useEffect } from 'react';
+import Layout from '../ui/layout/Layout';
+import { useOffersContext } from '../../context/offersContextController/OffersContextController';
+import { SingleOfferList } from '../offer/SingleOfferList';
+import dynamic from 'next/dynamic';
+
+import { offersMock } from './offersMock.js';
 
 const OfferList = () => {
+  // mock offers
+  const offers = offersMock.slice(0, -1);
+  const Map = dynamic(() => import('./Map'), { ssr: false });
+
   const offersContext = useOffersContext();
 
   useEffect(() => {}, [offersContext.offersList]);
+
+  const onMarkerShowDetailsClick = (event) => {
+    console.log(event);
+  };
 
   return (
     <Layout>
@@ -15,6 +26,12 @@ const OfferList = () => {
         {offersContext.offersList.map((offer) => (
           <SingleOfferList offer={offer} />
         ))}
+      </div>
+      <div style={{ height: 500, width: '100%' }} py={4}>
+        <Map
+          onMarkerShowDetailsClick={onMarkerShowDetailsClick}
+          offers={offers}
+        />
       </div>
     </Layout>
   );
