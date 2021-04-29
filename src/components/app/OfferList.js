@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import Layout from '../ui/layout/Layout';
 import { useOffersContext } from '../../context/offersContextController/OffersContextController';
 import { SingleOfferList } from '../offer/SingleOfferList';
-import { OfferDetails } from '../offer/OfferDetails';
 import dynamic from 'next/dynamic';
 
 import { offersMock } from './offersMock.js';

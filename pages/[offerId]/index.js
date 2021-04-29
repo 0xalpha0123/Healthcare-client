@@ -3,7 +3,7 @@ import { useQuery } from 'react-fetching-library';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 import Layout from '../../src/components/ui/layout/Layout';
-import OfferDetails from '../../src/components/offer/OfferDetails';
+import OfferDetails from '../../src/components/OfferDetails.js';
 import { getOfferAction } from '../../src/api/actions/offerActions';
 
 export default function Home() {
