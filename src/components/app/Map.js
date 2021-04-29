@@ -1,9 +1,9 @@
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css';
 import 'leaflet-defaulticon-compatibility';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 
-const Map = ({ points, offers }) => {
+const Map = ({ onMarkerShowDetailsClick, offers }) => {
   const offersToBounds = (offers) => {
     // TODO: we need to know which offer is connected to which location
     return offers.map((offer) => [
@@ -32,18 +32,29 @@ const Map = ({ points, offers }) => {
           animate={true}
         >
           <Popup style={{ width: '1500px' }}>
-            {/* <div className="flex flex-row">
-              <div> */}
-            <img src={offer.company.logo_file_path} />
-            {/* </div> */}
-            {/* <div> */}
-            <p className="font-bold">{offer.company.name}</p>
-            <p>{offer.title}</p>
-            <p>
+            <img
+              className="m-auto"
+              style={{
+                maxHeight: '120px',
+                maxWidth: '120px',
+              }}
+              src={offer.company.logo_file_path}
+            />
+
+            <span className="block my-1 font-bold">{offer.company.name}</span>
+            <span className="block my-1">{offer.title}</span>
+            <span className="block my-1">
               {offer.salary_from} - {offer.salary_to} PLN
-            </p>
-            {/* </div>
-            </div> */}
+            </span>
+            <button
+              className="block m-auto bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              onClick={() => {
+                onMarkerShowDetailsClick(offer.id);
+              }}
+            >
+              {/* TODO: it should be imported from translations */}
+              Show details
+            </button>
           </Popup>
         </Marker>
       ))}
