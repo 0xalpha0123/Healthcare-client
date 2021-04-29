@@ -1,7 +1,7 @@
 export function getAgreementTypesAction() {
   return {
-    method: "GET",
-    endpoint: "/offers/agreement-types",
+    method: 'GET',
+    endpoint: '/offers/agreement-types',
   };
 }
 
@@ -14,8 +14,8 @@ export function getOffersAction({
   salaryTo,
 }) {
   return {
-    method: "GET",
-    endpoint: "/offers",
+    method: 'GET',
+    endpoint: '/offers',
     query: {
       title,
       profession_id: professionId,
@@ -27,17 +27,24 @@ export function getOffersAction({
   };
 }
 
+export function getOfferAction({ id }) {
+  return {
+    method: 'GET',
+    endpoint: `/offers/${id}`,
+  };
+}
+
 export function getProfessionsAction() {
   return {
-    method: "GET",
-    endpoint: "/offers/professions",
+    method: 'GET',
+    endpoint: '/offers/professions',
   };
 }
 
 export function getSpecializationsAction({ professionId }) {
   return {
-    method: "GET",
-    endpoint: "/offers/specializations",
+    method: 'GET',
+    endpoint: '/offers/specializations',
     query: { profession_id: professionId },
   };
 }
