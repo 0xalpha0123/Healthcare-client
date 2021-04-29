@@ -1,5 +1,3 @@
-// TODO: this should probably be moved to a page
-// import { useOfferContext } from '/src/context/offerContextController.js/OfferContextController.jsr';
 import ApplySection from './ApplySection';
 import CompanySection from './CompanySection';
 import HeaderSection from './HeaderSection';
@@ -8,7 +6,6 @@ import OfferSection from './OfferSection';
 import { offersMock } from '../app/offersMock';
 
 const OfferDetails = ({ offer }) => {
-  console.log('>> OfferDetails', offer);
   offer = offersMock[0];
 
   if (offer) {
