@@ -1,6 +1,6 @@
-import React from "react";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import OfferList from "../src/components/app/OfferList";
+import React from 'react';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import OfferList from '../src/components/app/OfferList';
 
 export default function Home() {
   return <OfferList />;
@@ -8,6 +8,6 @@ export default function Home() {
 
 export const getStaticProps = async ({ locale }) => ({
   props: {
-    ...(await serverSideTranslations(locale, ["common"])),
+    ...(await serverSideTranslations(locale, ['common'])),
   },
 });

@@ -19,6 +19,6 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async ({ locale }) => ({
   props: {
-    ...(await serverSideTranslations(locale, ['common'])),
+    ...(await serverSideTranslations(locale, ['offer'])),
   },
 });
