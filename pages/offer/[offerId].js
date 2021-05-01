@@ -11,6 +11,7 @@ import { offersMock } from '../../src/components/app/offersMock';
 export default function Home() {
   const router = useRouter();
   const { offerId } = router.query;
+  // TODO: invalid server response atm
   const { payload } = useQuery(getOfferAction({ id: offerId }));
 
   const offer = offersMock[0];
