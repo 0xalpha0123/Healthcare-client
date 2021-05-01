@@ -3,14 +3,10 @@ import CompanySection from './CompanySection';
 import HeaderSection from './HeaderSection';
 import OfferSection from './OfferSection';
 
-import { offersMock } from '../app/offersMock';
-
 const OfferDetails = ({ offer }) => {
-  offer = offersMock[0];
-
   if (offer) {
     return (
-      <div className="flex flex-col w-1/2 p-5 bg-gray-100">
+      <div className="flex flex-col p-5 bg-gray-100">
         <HeaderSection offer={offer} />
         <CompanySection description={offer.company.description} />
         <OfferSection description={offer.description} />
