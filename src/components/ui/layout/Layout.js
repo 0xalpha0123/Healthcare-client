@@ -5,7 +5,7 @@ import Header from './Header';
 
 const Layout = ({ children, offers }) => {
   const router = useRouter();
-  const Map = dynamic(() => import('./Map'), { ssr: false });
+  const Map = dynamic(() => import('./Map/'), { ssr: false });
 
   const onMarkerShowDetailsClick = (id) => {
     router.push(`/offer/${id}`);
