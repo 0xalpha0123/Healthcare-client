@@ -8,8 +8,8 @@ const OfferDetails = ({ offer }) => {
     return (
       <div className="flex flex-col p-5 bg-gray-100">
         <HeaderSection offer={offer} />
-        <CompanySection description={offer.company.description} />
         <OfferSection description={offer.description} />
+        <CompanySection description={offer.company.description} />
         <ApplySection />
       </div>
     );
