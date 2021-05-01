@@ -3,17 +3,21 @@ import { useQuery } from 'react-fetching-library';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 import Layout from '../../src/components/ui/layout/Layout';
-import OfferDetails from '../../src/components/OfferDetails.js';
+import OfferDetails from '../../src/components/OfferDetails/index.js';
 import { getOfferAction } from '../../src/api/actions/offerActions';
+
+import { offersMock } from '../../src/components/app/offersMock';
 
 export default function Home() {
   const router = useRouter();
   const { offerId } = router.query;
   const { payload } = useQuery(getOfferAction({ id: offerId }));
 
+  const offer = offersMock[0];
+
   return (
-    <Layout>
-      <OfferDetails offer={payload} />
+    <Layout offers={[offer]}>
+      <OfferDetails offer={offer} />
     </Layout>
   );
 }
