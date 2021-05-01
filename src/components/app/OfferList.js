@@ -27,7 +27,6 @@ const OfferList = () => {
           <SingleOfferList offer={offer} />
         ))}
       </div>
-      <div style={{ height: 500, width: '100%' }} py={4}></div>
     </Layout>
   );
 };
