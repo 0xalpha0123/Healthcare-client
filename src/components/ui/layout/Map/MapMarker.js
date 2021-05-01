@@ -2,9 +2,10 @@ import 'leaflet/dist/leaflet.css';
 import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css';
 import 'leaflet-defaulticon-compatibility';
 import { Marker, Popup } from 'react-leaflet';
+import { useTranslation } from 'next-i18next';
 
 const MapMarker = ({ onMarkerShowDetailsClick, offer, location }) => {
-  console.log(location);
+  const { t } = useTranslation('offer');
 
   return (
     <Marker
@@ -44,7 +45,7 @@ const MapMarker = ({ onMarkerShowDetailsClick, offer, location }) => {
             }}
           >
             {/* TODO: it should be imported from translations */}
-            Show details
+            {t('show-offer-details')}
           </button>
         </div>
       </Popup>
