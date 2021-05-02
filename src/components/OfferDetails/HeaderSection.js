@@ -10,7 +10,7 @@ const HeaderSection = ({ offer }) => {
             src={offer.company.logo_file_path}
           />
         </div>
-        <div className="ml-5">
+        <div className="ml-5 flex-grow">
           <h1 className="my-1 text-2xl">{offer.title}</h1>
           <p className="my-1 text-lg">{offer.company.name}</p>
           <address className="text-sm font-thin">
