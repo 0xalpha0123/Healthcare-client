@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import Layout from '../ui/layout/Layout';
 import { useOffersContext } from '../../context/offersContextController/OffersContextController';
-import { SingleOfferList } from '../offer/SingleOfferList';
+import SingleOfferList from '../offer/SingleOfferList';
 import { Select } from '../ui/Select';
 import { FiltersStates } from '../../context/states';
 import { useTranslation } from 'next-i18next';
