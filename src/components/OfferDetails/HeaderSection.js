@@ -1,6 +1,4 @@
 const HeaderSection = ({ offer }) => {
-  console.log('>> offer rrr', offer);
-
   if (offer) {
     return (
       <div className="flex flex-row items-center shadow-md p-5 mb-5 bg-primary text-white rounded-md">
