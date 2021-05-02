@@ -31,7 +31,9 @@ const SingleOfferList = ({ offer }) => (
             </p>
           </div>
           <div>
-            <p>profesja - specjalizacja</p>
+            <p>
+              {offer.profession.name} - {offer.specialization.name}
+            </p>
           </div>
         </div>
       </div>
