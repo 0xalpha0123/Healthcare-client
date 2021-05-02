@@ -1,3 +1,6 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
+
 const HeaderSection = ({ offer }) => {
   if (offer) {
     return (
@@ -12,13 +15,14 @@ const HeaderSection = ({ offer }) => {
           <h1 className="my-1 text-2xl">{offer.title}</h1>
           <p className="my-1 text-lg">{offer.company.name}</p>
           <address className="text-sm font-thin">
-            <ul>
-              {offer.locations.map((location) => (
-                <li key={`address-${location.id}`} className="list-disc ml-5">
+            {offer.locations.map((location) => (
+              <p key={`address-${location.id}`}>
+                <FontAwesomeIcon icon={faMapMarkerAlt} size={'xs'} />{' '}
+                <span className="ml-1">
                   {location.street}, {location.city}
-                </li>
-              ))}
-            </ul>
+                </span>
+              </p>
+            ))}
           </address>
           <p className="shadow my-2 text-xl text-black bg-white rounded-lg text-center">
             {offer.salary_from} - {offer.salary_to} PLN

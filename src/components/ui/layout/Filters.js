@@ -7,10 +7,12 @@ import {
   getSpecializationsAction,
 } from '../../../api/actions/offerActions';
 import { StatusCodes } from 'http-status-codes';
-import { NumberInput, SearchInput } from '../Input';
-import { Select } from '../Select';
 import { getUniqueLocations } from '../../../api/actions/companyActions';
 import { useTranslation } from 'next-i18next';
+
+import SearchInput from './input/SearchInput';
+import SalaryInput from './input/SalaryInput';
+import Select from './input/Select';
 
 const Filters = () => {
   const offersContext = useOffersContext();
@@ -131,9 +133,9 @@ const Filters = () => {
           setValue={setTitleSearch}
           placeholder={t('search')}
         />
-
         <Select
           value={selectedLocation}
+          onClear={true}
           onChange={(e) => {
             setSelectedLocation(e.target.value);
           }}
@@ -147,6 +149,7 @@ const Filters = () => {
         </Select>
         <Select
           value={selectedProfession}
+          onClear={true}
           onChange={(e) => {
             setSelectedProfession(e.target.value);
           }}
@@ -160,6 +163,7 @@ const Filters = () => {
         </Select>
         <Select
           value={selectedSpecialization}
+          onClear={true}
           onChange={(e) => {
             e.preventDefault();
             setSelectedSpecialization(e.target.value);
@@ -172,13 +176,14 @@ const Filters = () => {
             </option>
           ))}
         </Select>
-        <NumberInput
+        <SalaryInput
+          label={`${t('salaryFrom')}:`}
           value={salaryFrom}
           placeholder={t('salaryFrom')}
           setValue={setSalaryFrom}
         />
-
-        <NumberInput
+        <SalaryInput
+          label={`${t('salaryTo')}:`}
           value={salaryTo}
           placeholder={t('salaryTo')}
           setValue={setSalaryTo}
