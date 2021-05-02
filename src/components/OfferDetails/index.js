@@ -13,16 +13,17 @@ import { offersMock } from '../app/offersMock';
 const OfferDetails = ({ offerId }) => {
   // TODO: invalid server response atm
   const { payload } = useQuery(getOfferAction({ id: offerId }));
+  console.log('>> payload', payload);
 
   const offer = offersMock[0];
 
-  if (offer) {
+  if (payload) {
     return (
-      <Layout offers={[offer]}>
+      <Layout offers={[payload]}>
         <div className="flex flex-col p-5 bg-gray-100">
-          <HeaderSection offer={offer} />
-          <OfferSection description={offer.description} />
-          <CompanySection description={offer.company.description} />
+          <HeaderSection offer={payload} />
+          <OfferSection description={payload.description} />
+          <CompanySection description={payload.company.description} />
           <ApplySection />
         </div>
       </Layout>

@@ -6,19 +6,18 @@ import { Select } from '../ui/Select';
 import { FiltersStates } from '../../context/states';
 import { useTranslation } from 'next-i18next';
 
-import { offersMock } from './offersMock.js';
+import { offersMock } from '../app/offersMock';
 
 const OfferList = () => {
-  // mock offers
-  const offers = offersMock.slice(0, -1);
-
   const offersContext = useOffersContext();
   const { t } = useTranslation('common');
   useEffect(() => {}, [offersContext.offersList]);
+  console.log(offersContext.offersList);
+  console.log(offersMock);
 
   return (
-    <Layout offers={offersContext.offersList}>
-      <div className="fixed flex px-4 h-10 bg-white w-full">
+    <Layout offers={offersMock}>
+      <div className="fixed flex px-4 h-10 w-full">
         <Select
           value={offersContext.order}
           onChange={(e) => offersContext.setOrder(e.target.value)}
@@ -30,7 +29,7 @@ const OfferList = () => {
           ))}
         </Select>
       </div>
-      <div className="flex mx-2 flex-col pt-8">
+      <div className="flex px-2 flex-col pt-8 bg-gray-100">
         {offersContext.offersList.map((offer) => (
           <SingleOfferList offer={offer} />
         ))}
