@@ -17,7 +17,7 @@ const OfferList = () => {
   useEffect(() => {}, [offersContext.offersList]);
 
   return (
-    <Layout offers={offers}>
+    <Layout offers={offersContext.offersList}>
       <div className="fixed flex px-4 h-10 bg-white w-full">
         <Select
           value={offersContext.order}
@@ -31,7 +31,7 @@ const OfferList = () => {
         </Select>
       </div>
       <div className="flex mx-2 flex-col pt-8">
-        {offers.map((offer) => (
+        {offersContext.offersList.map((offer) => (
           <SingleOfferList offer={offer} />
         ))}
       </div>

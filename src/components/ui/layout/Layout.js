@@ -14,7 +14,7 @@ const Layout = ({ children, offers }) => {
   return (
     <div className="flex flex-col h-screen">
       <Header />
-      <div className="flex overflow-hidden">
+      <div className="flex flex-grow overflow-hidden">
         <div className="w-full overflow-scroll">{children}</div>
         <div className="w-full">
           <Map
