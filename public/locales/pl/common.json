@@ -3,6 +3,9 @@
   "location": "Lokalizacja",
   "profession": "Profesja",
   "specialization": "Specjalizacja",
-  "salary-from": "Wynagrodzenie od",
-  "salary-to": "Wynagrodzenie do"
+  "salaryFrom": "Wynagrodzenie od",
+  "salaryTo": "Wynagrodzenie do",
+  "latest": "Najnowsze",
+  "salaryMax": "Największe wynagrodzenie",
+  "salaryMin": "Najmniejsze wynagrodzenie"
 }

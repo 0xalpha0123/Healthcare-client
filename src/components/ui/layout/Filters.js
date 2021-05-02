@@ -37,6 +37,7 @@ const Filters = () => {
       city: selectedLocation,
       salaryFrom,
       salaryTo,
+      order: offersContext.order,
     }),
     false
   );
@@ -72,7 +73,12 @@ const Filters = () => {
     (async () => {
       await Promise.all([loadOffers()]);
     })();
-  }, [selectedProfession, selectedSpecialization, selectedLocation]);
+  }, [
+    selectedProfession,
+    selectedSpecialization,
+    selectedLocation,
+    offersContext.order,
+  ]);
 
   const loadOffers = async () => {
     const { payload, status } = await getOffersQuery();
@@ -168,13 +174,13 @@ const Filters = () => {
         </Select>
         <NumberInput
           value={salaryFrom}
-          placeholder={t("salary-from")}
+          placeholder={t("salaryFrom")}
           setValue={setSalaryFrom}
         />
 
         <NumberInput
           value={salaryTo}
-          placeholder={t("salary-to")}
+          placeholder={t("salaryTo")}
           setValue={setSalaryTo}
         />
       </form>
