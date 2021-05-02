@@ -1,23 +1,20 @@
-import React, { useEffect } from 'react';
-import Layout from '../ui/layout/Layout';
+import { useEffect } from 'react';
 import { useOffersContext } from '../../context/offersContextController/OffersContextController';
-import SingleOfferList from '../offer/SingleOfferList';
-import { Select } from '../ui/Select';
 import { FiltersStates } from '../../context/states';
 import { useTranslation } from 'next-i18next';
 
-import { offersMock } from '../app/offersMock';
+import Layout from '../ui/layout/Layout';
+import SingleOfferList from '../offer/SingleOfferList';
+import Select from '../ui/layout/input/Select';
 
 const OfferList = () => {
   const offersContext = useOffersContext();
   const { t } = useTranslation('common');
   useEffect(() => {}, [offersContext.offersList]);
-  console.log(offersContext.offersList);
-  console.log(offersMock);
 
   return (
-    <Layout offers={offersMock}>
-      <div className="flex w-full py-2 justify-end items-center">
+    <Layout offers={offersContext.offersList} filters={true}>
+      <div className="flex w-full p-2 justify-end items-center">
         {t('sort_by')}:
         <Select
           value={offersContext.order}
@@ -30,7 +27,7 @@ const OfferList = () => {
           ))}
         </Select>
       </div>
-      <div className="flex px-2 flex-col">
+      <div className="flex px-4 flex-col">
         {offersContext.offersList.map((offer) => (
           <SingleOfferList offer={offer} />
         ))}
