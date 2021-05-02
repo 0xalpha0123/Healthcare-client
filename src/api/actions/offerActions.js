@@ -13,7 +13,6 @@ export function getOffersAction({
   salaryFrom,
   salaryTo,
 }) {
-  console.log('>> get offers action');
   return {
     method: 'GET',
     endpoint: '/offers',
