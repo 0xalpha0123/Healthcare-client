@@ -23,9 +23,9 @@ const OfferList = () => {
           value={offersContext.order}
           onChange={(e) => offersContext.setOrder(e.target.value)}
         >
-          {Object.values(FiltersStates).map((f) => (
-            <option key={`state-${f}`} value={f}>
-              {t(f)}
+          {Object.values(FiltersStates).map((filter) => (
+            <option key={`state-${filter}`} value={filter}>
+              {t(filter)}
             </option>
           ))}
         </Select>
