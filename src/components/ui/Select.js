@@ -1,4 +1,5 @@
-import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 
 export const Select = ({ children, onChange, label, value }) => (
   <div className="relative bg-white inline-flex overflow-hidden border border-gray-200 rounded-md text-gray-600 h-10 w-40 mx-2 hover:border-gray-300">
@@ -14,8 +15,8 @@ export const Select = ({ children, onChange, label, value }) => (
       )}
       {children}
     </select>
-    <div className="flex justify-center items-center w-10 h-full cursor-pointer border-l border-gray-200">
-      x
+    <div className="flex justify-center items-center w-10 h-full text-gray-500 hover:bg-gray-500 hover:text-white cursor-pointer border-l border-gray-200">
+      <FontAwesomeIcon icon={faTimesCircle} />
     </div>
   </div>
 );
