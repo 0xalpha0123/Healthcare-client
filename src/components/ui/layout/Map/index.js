@@ -28,6 +28,7 @@ const Map = ({ onMarkerShowDetailsClick, offers }) => {
       {offers.map((offer) =>
         offer.company.locations.map((location) => (
           <MapMarker
+            key={`marker-${offer.id}-${location.id}`}
             location={location}
             offer={offer}
             onMarkerShowDetailsClick={onMarkerShowDetailsClick}
