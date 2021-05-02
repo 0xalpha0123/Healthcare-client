@@ -1,23 +1,23 @@
-import { useOffersContext } from "../../../context/offersContextController/OffersContextController";
-import React, { useEffect, useState } from "react";
-import { useQuery } from "react-fetching-library";
+import { useOffersContext } from '../../../context/offersContextController/OffersContextController';
+import React, { useEffect, useState } from 'react';
+import { useQuery } from 'react-fetching-library';
 import {
   getOffersAction,
   getProfessionsAction,
   getSpecializationsAction,
-} from "../../../api/actions/offerActions";
-import { StatusCodes } from "http-status-codes";
-import { NumberInput, SearchInput } from "../Input";
-import { Select } from "../Select";
-import { getUniqueLocations } from "../../../api/actions/companyActions";
-import { useTranslation } from "next-i18next";
+} from '../../../api/actions/offerActions';
+import { StatusCodes } from 'http-status-codes';
+import { NumberInput, SearchInput } from '../Input';
+import { Select } from '../Select';
+import { getUniqueLocations } from '../../../api/actions/companyActions';
+import { useTranslation } from 'next-i18next';
 
 const Filters = () => {
   const offersContext = useOffersContext();
 
-  const { t } = useTranslation("common");
+  const { t } = useTranslation('common');
 
-  const [titleSearch, setTitleSearch] = useState("");
+  const [titleSearch, setTitleSearch] = useState('');
   const [professionsList, setProfessionsList] = useState([]);
   const [specializationsList, setSpecializationsList] = useState([]);
   const [locationsList, setLocationsList] = useState([]);
@@ -114,14 +114,14 @@ const Filters = () => {
   };
 
   return (
-    <div className="flex flex-col px-2 h-16 justify-center">
+    <div className="flex flex-col justify-center px-3 h-16">
       <form
         className="flex flex-wrap"
         onSubmit={(e) => {
           loadOffers();
         }}
         onKeyDown={(event) => {
-          if (event.key === "Enter") {
+          if (event.key === 'Enter') {
             loadOffers();
           }
         }}
@@ -129,7 +129,7 @@ const Filters = () => {
         <SearchInput
           value={titleSearch}
           setValue={setTitleSearch}
-          placeholder={t("search")}
+          placeholder={t('search')}
         />
 
         <Select
@@ -137,7 +137,7 @@ const Filters = () => {
           onChange={(e) => {
             setSelectedLocation(e.target.value);
           }}
-          label={t("location")}
+          label={t('location')}
         >
           {locationsList.map(({ city }) => (
             <option key={`location-${city}`} value={city}>
@@ -150,7 +150,7 @@ const Filters = () => {
           onChange={(e) => {
             setSelectedProfession(e.target.value);
           }}
-          label={t("profession")}
+          label={t('profession')}
         >
           {professionsList.map(({ id, name }) => (
             <option key={`profession-${id}`} value={id}>
@@ -164,7 +164,7 @@ const Filters = () => {
             e.preventDefault();
             setSelectedSpecialization(e.target.value);
           }}
-          label={t("specialization")}
+          label={t('specialization')}
         >
           {specializationsList.map(({ id, name }) => (
             <option key={`specialization-${id}`} value={id}>
@@ -174,13 +174,13 @@ const Filters = () => {
         </Select>
         <NumberInput
           value={salaryFrom}
-          placeholder={t("salaryFrom")}
+          placeholder={t('salaryFrom')}
           setValue={setSalaryFrom}
         />
 
         <NumberInput
           value={salaryTo}
-          placeholder={t("salaryTo")}
+          placeholder={t('salaryTo')}
           setValue={setSalaryTo}
         />
       </form>
