@@ -44,7 +44,6 @@ const MapMarker = ({ onMarkerShowDetailsClick, offer, location }) => {
               onMarkerShowDetailsClick(offer.id);
             }}
           >
-            {/* TODO: it should be imported from translations */}
             {t('show-offer-details')}
           </button>
         </div>
