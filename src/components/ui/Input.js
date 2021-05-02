@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 
 export const SearchInput = ({ value, setValue, placeholder }) => (
   <input
-    className="border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none"
+    className="border border-gray-300 rounded-md text-gray-600 w-96 mx-2 px-5 hover:border-gray-400 focus:outline-none appearance-none"
     type="text"
     placeholder={placeholder}
     value={value}
@@ -12,7 +12,7 @@ export const SearchInput = ({ value, setValue, placeholder }) => (
 
 export const NumberInput = ({ value, setValue, placeholder }) => (
   <input
-    className="border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none"
+    className="border border-gray-200 rounded-md text-gray-600 w-32 mx-2 px-5 hover:border-gray-300 focus:outline-none appearance-none"
     type="text"
     placeholder={placeholder}
     value={value}
