@@ -7,6 +7,14 @@ import MapMarker from './MapMarker';
 
 const Map = ({ onMarkerShowDetailsClick, offers }) => {
   const mapBounds = (offers) => {
+    if (offers.length === 0) {
+      return [
+        [53.948, 14.56],
+        [53.948, 14.56],
+        [49.116, 22.516],
+      ];
+    }
+
     return offers.map((offer) =>
       offer.company.locations.map((location) => [
         location.coordinates.x,
