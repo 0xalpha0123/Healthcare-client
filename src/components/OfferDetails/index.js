@@ -8,14 +8,9 @@ import CompanySection from './CompanySection';
 import HeaderSection from './HeaderSection';
 import OfferSection from './OfferSection';
 
-import { offersMock } from '../app/offersMock';
-
 const OfferDetails = ({ offerId }) => {
-  // TODO: invalid server response atm
   const { payload } = useQuery(getOfferAction({ id: offerId }));
   console.log('>> payload', payload);
-
-  const offer = offersMock[0];
 
   if (payload) {
     return (
