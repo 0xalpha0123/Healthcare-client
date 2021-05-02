@@ -1,9 +1,9 @@
 const HeaderSection = ({ offer }) => {
   return (
-    <div className="flex flex-row items-center p-5 mb-5 bg-gray-700 text-white rounded-md">
+    <div className="flex flex-row items-center shadow-md p-5 mb-5 bg-gray-700 text-white rounded-md">
       <div className="w-1/4">
         <img
-          className="max-h-36 max-w-36 p-2 m-auto bg-white rounded-md"
+          className="shadow max-h-36 max-w-36 p-2 m-auto bg-white rounded-md"
           src={offer.company.logo_file_path}
         />
       </div>
@@ -19,7 +19,7 @@ const HeaderSection = ({ offer }) => {
             ))}
           </ul>
         </address>
-        <p className="my-2 text-xl text-black bg-white rounded-lg text-center">
+        <p className="shadow my-2 text-xl text-black bg-white rounded-lg text-center">
           {offer.salary_from} - {offer.salary_to} PLN
         </p>
       </div>
