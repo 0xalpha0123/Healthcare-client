@@ -10,14 +10,7 @@ const OfferList = () => {
   const offers = offersMock.slice(0, -1);
 
   const offersContext = useOffersContext();
-  // TODO: stoped working for some reason - investigate
   useEffect(() => {}, [offersContext.offersList]);
-
-  // const onMarkerShowDetailsClick = (event) => {
-  //   console.log(event);
-  // };
-
-  console.log('>> offers context offers list', offersContext.offersList);
 
   return (
     <Layout offers={offers}>

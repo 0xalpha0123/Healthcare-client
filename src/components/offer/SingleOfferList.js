@@ -2,7 +2,6 @@ import React from 'react';
 
 export const SingleOfferList = ({ offer }) => {
   const { id, title, salary_from, salary_to } = offer;
-  console.log('>> single offer list', offer);
 
   return (
     <div
