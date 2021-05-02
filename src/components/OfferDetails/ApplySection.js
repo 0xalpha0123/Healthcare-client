@@ -5,7 +5,7 @@ const ApplySection = () => {
 
   return (
     <div className="flex justify-center shadow-md p-3 mb-5 bg-white rounded-md ">
-      <div className="bg-gray-400 w-36 p-2 uppercase text-white text-center rounded-2xl cursor-pointer">
+      <div className="bg-primary w-36 p-2 uppercase text-white text-center rounded-xl cursor-pointer hover:bg-secondary">
         {t('apply')}
       </div>
     </div>

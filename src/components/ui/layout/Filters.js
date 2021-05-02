@@ -114,7 +114,7 @@ const Filters = () => {
   };
 
   return (
-    <div className="flex flex-col justify-center px-3 h-16 shadow-md">
+    <div className="flex flex-col justify-center px-3 h-16 shadow-md bg-primary">
       <form
         className="flex flex-wrap"
         onSubmit={(e) => {

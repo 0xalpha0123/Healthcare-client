@@ -3,7 +3,7 @@ const HeaderSection = ({ offer }) => {
 
   if (offer) {
     return (
-      <div className="flex flex-row items-center shadow-md p-5 mb-5 bg-gray-700 text-white rounded-md">
+      <div className="flex flex-row items-center shadow-md p-5 mb-5 bg-primary text-white rounded-md">
         <div className="w-1/4">
           <img
             className="shadow max-h-36 max-w-36 p-2 m-auto bg-white rounded-md"
