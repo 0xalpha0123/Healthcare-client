@@ -39,7 +39,7 @@ const MapMarker = ({ onMarkerShowDetailsClick, offer, location }) => {
         </div>
         <div>
           <button
-            className="block w-full bg-blue-600 hover:bg-blue-800 text-white font-bold p-1 rounded"
+            className="block w-full bg-primary hover:bg-secondary text-white font-bold p-1 rounded"
             onClick={() => {
               onMarkerShowDetailsClick(offer.id);
             }}

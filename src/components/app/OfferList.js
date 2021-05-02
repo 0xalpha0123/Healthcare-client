@@ -17,7 +17,8 @@ const OfferList = () => {
 
   return (
     <Layout offers={offersMock}>
-      <div className="fixed flex px-4 h-10 w-full">
+      <div className="flex w-full py-2 justify-end items-center">
+        {t('sort_by')}:
         <Select
           value={offersContext.order}
           onChange={(e) => offersContext.setOrder(e.target.value)}
@@ -29,7 +30,7 @@ const OfferList = () => {
           ))}
         </Select>
       </div>
-      <div className="flex px-2 flex-col pt-8 bg-gray-100">
+      <div className="flex px-2 flex-col">
         {offersContext.offersList.map((offer) => (
           <SingleOfferList offer={offer} />
         ))}

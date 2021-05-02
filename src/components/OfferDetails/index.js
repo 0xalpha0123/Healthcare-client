@@ -15,7 +15,7 @@ const OfferDetails = ({ offerId }) => {
   if (payload) {
     return (
       <Layout offers={[payload]}>
-        <div className="flex flex-col p-5 bg-gray-100">
+        <div className="flex flex-col p-5 bg-gray-100 h-full">
           <HeaderSection offer={payload} />
           <OfferSection description={payload.description} />
           <CompanySection description={payload.company.description} />
