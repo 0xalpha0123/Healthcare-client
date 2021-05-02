@@ -18,7 +18,7 @@ const Map = ({ onMarkerShowDetailsClick, offers }) => {
     }
 
     return offers.map((offer) =>
-      offer.company.locations.map((location) => [
+      offer.locations.map((location) => [
         location.coordinates.x,
         location.coordinates.y,
       ])
@@ -36,7 +36,7 @@ const Map = ({ onMarkerShowDetailsClick, offers }) => {
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
       />
       {offers.map((offer) =>
-        offer.company.locations.map((location) => (
+        offer.locations.map((location) => (
           <MapMarker
             key={`marker-${offer.id}-${location.id}`}
             location={location}

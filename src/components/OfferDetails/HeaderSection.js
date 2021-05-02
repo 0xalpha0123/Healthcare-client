@@ -15,7 +15,7 @@ const HeaderSection = ({ offer }) => {
           <p className="my-1 text-lg">{offer.company.name}</p>
           <address className="text-sm font-thin">
             <ul>
-              {offer.company.locations.map((location) => (
+              {offer.locations.map((location) => (
                 <li key={`address-${location.id}`} className="list-disc ml-5">
                   {location.street}, {location.city}
                 </li>
