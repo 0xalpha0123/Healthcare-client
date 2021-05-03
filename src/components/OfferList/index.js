@@ -4,7 +4,7 @@ import { FiltersStates } from '../../context/states';
 import { useTranslation } from 'next-i18next';
 
 import Layout from '../ui/layout/Layout';
-import SingleOfferList from '../offer/SingleOfferList';
+import OfferCard from './OfferCard';
 import Select from '../ui/layout/input/Select';
 
 const OfferList = () => {
@@ -29,7 +29,7 @@ const OfferList = () => {
       </div>
       <div className="flex px-4 flex-col">
         {offersContext.offersList.map((offer) => (
-          <SingleOfferList offer={offer} />
+          <OfferCard offer={offer} />
         ))}
       </div>
     </Layout>
