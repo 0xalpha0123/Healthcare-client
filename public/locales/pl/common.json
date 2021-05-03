@@ -5,12 +5,12 @@
   "location": "Lokalizacja",
   "offer-description": "Opis ogłoszenia",
   "profession": "Profesja",
-  "salaryFrom": "Wynagrodzenie od",
+  "salary-from": "Wynagrodzenie od",
   "salaryMax": "Największe wynagrodzenie",
   "salaryMin": "Najmniejsze wynagrodzenie",
-  "salaryTo": "Wynagrodzenie do",
+  "salary-to": "Wynagrodzenie do",
   "search": "Szukaj",
   "show-offer-details": "Pokaż szczegóły",
-  "sort_by": "Sortuj według",
+  "sort-by": "Sortuj według",
   "specialization": "Specjalizacja"
 }

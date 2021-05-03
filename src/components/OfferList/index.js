@@ -15,7 +15,7 @@ const OfferList = () => {
   return (
     <Layout offers={offersContext.offersList} filters={true}>
       <div className="flex w-full p-2 justify-end items-center">
-        {t('sort_by')}:
+        {t('sort-by')}:
         <Select
           value={offersContext.order}
           onChange={(e) => offersContext.setOrder(e.target.value)}
