@@ -6,11 +6,15 @@ import { useTranslation } from 'next-i18next';
 import Layout from '../ui/layout/Layout';
 import OfferCard from './OfferCard';
 import Select from '../ui/layout/input/Select';
+import { FetchClient } from "../../context/clientContextController/ClientContextController";
+import { getOffersAction } from "../../api/actions/offerActions";
 
-const OfferList = () => {
+const OfferList = ({test}) => {
   const offersContext = useOffersContext();
   const { t } = useTranslation('common');
-  useEffect(() => {}, [offersContext.offersList]);
+
+  useEffect(() => {
+  }, [offersContext.offersList]);
 
   return (
     <Layout offers={offersContext.offersList} filters={true}>
@@ -35,5 +39,10 @@ const OfferList = () => {
     </Layout>
   );
 };
+
+OfferList.getInitialProps = async () => {
+    await FetchClient.query(getOffersAction());
+    return {}
+}
 
 export default OfferList;
