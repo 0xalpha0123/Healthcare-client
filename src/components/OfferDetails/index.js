@@ -10,7 +10,6 @@ import OfferSection from './OfferSection';
 
 const OfferDetails = ({ offerId }) => {
   const { payload } = useQuery(getOfferAction({ id: offerId }));
-  console.log('>> payload', payload);
 
   if (payload) {
     return (
