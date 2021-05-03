@@ -1,11 +1,18 @@
-import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 
-const OfferCard = ({ offer }) => (
-  <Link href={`/offer/${offer.id}`}>
+const OfferCard = ({ offer }) => {
+  const router = useRouter();
+
+  const goToOffer = (id) => {
+    router.push(`/offer/${id}`);
+  };
+
+  return (
     <div
       key={`offer-${offer.id}`}
+      onClick={() => goToOffer(offer.id)}
       className="flex w-full min-h-32 p-4 rounded-lg shadow-md bg-white my-1 cursor-pointer box-border border border-gray-100 hover:border-gray-300"
     >
       <div className="flex justify-center w-20 p-1">
@@ -44,7 +51,7 @@ const OfferCard = ({ offer }) => (
         </div>
       </div>
     </div>
-  </Link>
-);
+  );
+};
 
 export default OfferCard;

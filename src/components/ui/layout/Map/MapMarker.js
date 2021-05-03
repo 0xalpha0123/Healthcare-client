@@ -5,7 +5,7 @@ import { Marker, Popup } from 'react-leaflet';
 import { useTranslation } from 'next-i18next';
 
 const MapMarker = ({ onMarkerShowDetailsClick, offer, location }) => {
-  const { t } = useTranslation('offer');
+  const { t } = useTranslation('common');
 
   return (
     <Marker

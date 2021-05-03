@@ -177,15 +177,15 @@ const Filters = () => {
           ))}
         </Select>
         <SalaryInput
-          label={`${t('salaryFrom')}:`}
+          label={`${t('salary-from')}:`}
           value={salaryFrom}
-          placeholder={t('salaryFrom')}
+          placeholder={t('salary-from')}
           setValue={setSalaryFrom}
         />
         <SalaryInput
-          label={`${t('salaryTo')}:`}
+          label={`${t('salary-to')}:`}
           value={salaryTo}
-          placeholder={t('salaryTo')}
+          placeholder={t('salary-to')}
           setValue={setSalaryTo}
         />
       </form>
