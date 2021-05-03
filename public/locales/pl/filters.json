@@ -1,0 +1,11 @@
+{
+  "search": "Szukaj",
+  "location": "Lokalizacja",
+  "profession": "Profesja",
+  "specialization": "Specjalizacja",
+  "salaryFrom": "Wynagrodzenie od",
+  "salaryTo": "Wynagrodzenie do",
+  "latest": "Najnowsze",
+  "salaryMax": "Największe wynagrodzenie",
+  "salaryMin": "Najmniejsze wynagrodzenie"
+}
