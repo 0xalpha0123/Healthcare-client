@@ -2,7 +2,7 @@ import parse from 'html-react-parser';
 import { useTranslation } from 'next-i18next';
 
 const OfferSection = ({ description }) => {
-  const { t } = useTranslation('offer');
+  const { t } = useTranslation('common');
 
   return (
     <div className="bg-white shadow-md p-5 mb-5 rounded-md">
