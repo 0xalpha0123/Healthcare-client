@@ -6,8 +6,6 @@ import { useTranslation } from 'next-i18next';
 import Layout from '../ui/layout/Layout';
 import OfferCard from './OfferCard';
 import Select from '../ui/layout/input/Select';
-import { FetchClient } from "../../context/clientContextController/ClientContextController";
-import { getOffersAction } from "../../api/actions/offerActions";
 
 const OfferList = ({test}) => {
   const offersContext = useOffersContext();
