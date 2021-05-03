@@ -7,7 +7,7 @@ import Layout from '../ui/layout/Layout';
 import OfferCard from './OfferCard';
 import Select from '../ui/layout/input/Select';
 
-const OfferList = ({test}) => {
+const OfferList = () => {
   const offersContext = useOffersContext();
   const { t } = useTranslation('common');
 
