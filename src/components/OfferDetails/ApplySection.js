@@ -1,7 +1,7 @@
 import { useTranslation } from 'next-i18next';
 
 const ApplySection = () => {
-  const { t } = useTranslation('offer');
+  const { t } = useTranslation('common');
 
   return (
     <div className="flex justify-center shadow-md p-3 mb-5 bg-white rounded-md ">
