@@ -9,7 +9,7 @@ import Select from '../ui/layout/input/Select';
 
 const OfferList = () => {
   const offersContext = useOffersContext();
-  const { t } = useTranslation('common');
+  const { t } = useTranslation('offers');
   useEffect(() => {}, [offersContext.offersList]);
 
   return (
