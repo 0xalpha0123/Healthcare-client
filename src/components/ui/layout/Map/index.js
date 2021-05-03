@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import 'leaflet/dist/leaflet.css';
 import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css';
 import 'leaflet-defaulticon-compatibility';
@@ -11,7 +12,9 @@ const polandBoundsCoordSet = [
   [49.116, 22.516],
 ];
 
-const Map = ({ onMarkerShowDetailsClick, offers }) => {
+const Map = ({ offers }) => {
+  const router = useRouter();
+
   const mapBounds = (offers) => {
     if (offers.length === 0) {
       return polandBoundsCoordSet;
@@ -23,6 +26,10 @@ const Map = ({ onMarkerShowDetailsClick, offers }) => {
         location.coordinates.y,
       ])
     );
+  };
+
+  const onMarkerShowDetailsClick = (id) => {
+    router.push(`/offer/${id}`);
   };
 
   return (
