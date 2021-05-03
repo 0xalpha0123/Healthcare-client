@@ -31,7 +31,7 @@ const Filters = () => {
   const [salaryFrom, setSalaryFrom] = useState(0);
   const [salaryTo, setSalaryTo] = useState(20000);
 
-  const { query: getOffersQuery, payload: offersPayload, status: offersStatus, loading: offersLoading  } = useQuery(
+  const { query: getOffersQuery } = useQuery(
     getOffersAction({
       title: titleSearch,
       professionId: selectedProfession,
