@@ -17,7 +17,7 @@ import Select from './input/Select';
 const Filters = () => {
   const offersContext = useOffersContext();
 
-  const { t } = useTranslation('filters');
+  const { t } = useTranslation('common');
 
   const [titleSearch, setTitleSearch] = useState('');
   const [professionsList, setProfessionsList] = useState([]);
