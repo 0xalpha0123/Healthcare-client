@@ -40,9 +40,4 @@ const OfferList = ({test}) => {
   );
 };
 
-OfferList.getInitialProps = async () => {
-    await FetchClient.query(getOffersAction());
-    return {}
-}
-
 export default OfferList;
