@@ -12,7 +12,7 @@ export function getOffersAction({
   city,
   salaryFrom,
   salaryTo,
-                                  order,
+  order,
 }) {
   return {
     method: 'GET',

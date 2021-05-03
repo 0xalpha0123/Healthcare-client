@@ -1,9 +1,8 @@
+import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 
-import Link from 'next/link';
-
-const SingleOfferList = ({ offer }) => (
+const OfferCard = ({ offer }) => (
   <Link href={`/offer/${offer.id}`}>
     <div
       key={`offer-${offer.id}`}
@@ -31,14 +30,14 @@ const SingleOfferList = ({ offer }) => (
             ))}
           </div>
         </div>
-        <div className="flex flex-col items-center ml-3">
+        <div className="flex flex-col items-end ml-3">
           <div className="flex flex-grow text-xl">
-            <p className="font-bold">
+            <p className="font-bold text-gray-800">
               {offer.salary_from} - {offer.salary_to} PLN
             </p>
           </div>
           <div>
-            <p>
+            <p className="text-gray-700 text-sm">
               {offer.profession.name} - {offer.specialization.name}
             </p>
           </div>
@@ -48,4 +47,4 @@ const SingleOfferList = ({ offer }) => (
   </Link>
 );
 
-export default SingleOfferList;
+export default OfferCard;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import OfferList from '../src/components/app/OfferList';
+import OfferList from '../src/components/OfferList';
 
 export default function Home() {
   return <OfferList />;
