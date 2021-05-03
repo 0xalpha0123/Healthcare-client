@@ -12,13 +12,12 @@ import OfferSection from './OfferSection';
 const OfferDetails = ({ offerId }) => {
   const Map = dynamic(() => import('../ui/layout/Map/'), { ssr: false });
   const { payload } = useQuery(getOfferAction({ id: offerId }));
-  console.log('>> payload', payload);
 
   if (payload) {
     return (
       <Layout>
-        <div className="flex w-full overflow-scroll">
-          <div className="flex flex-col p-5 bg-gray-100 h-full">
+        <div className="flex w-full">
+          <div className="flex flex-col w-full overflow-scroll p-5 bg-gray-100 h-full">
             <HeaderSection offer={payload} />
             <OfferSection description={payload.description} />
             <CompanySection description={payload.company.description} />

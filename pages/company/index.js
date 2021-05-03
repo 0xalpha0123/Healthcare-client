@@ -5,9 +5,8 @@ import { getCompaniesAction } from '../../src/api/actions/companyActions';
 import Layout from '../../src/components/ui/layout/Layout';
 import CompanyCard from '../../src/components/CompanyList/CompanyCard';
 
-const CompaniesList = () => {
+const Companies = () => {
   const { payload } = useQuery(getCompaniesAction());
-  console.log('>> payload', payload);
 
   if (payload) {
     return (
@@ -26,4 +25,4 @@ const CompaniesList = () => {
   return '';
 };
 
-export default CompaniesList;
+export default Companies;
