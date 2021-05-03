@@ -8,8 +8,8 @@ const OffersContext = createContext({
     setOrder: null,
 });
 
-export const OffersContextController = ({ children }) => {
-  const [offersList, setOffersList] = useState([]);
+export const OffersContextController = ({ children, offers }) => {
+  const [offersList, setOffersList] = useState(offers);
   const [order, setOrder] = useState(FiltersStates.latest);
 
   return (
