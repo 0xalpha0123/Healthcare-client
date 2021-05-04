@@ -1,3 +1,16 @@
 {
-  "test": "Test",
+  "apply": "Aplikuj",
+  "company-description": "O firmie",
+  "latest": "Najnowsze",
+  "location": "Lokalizacja",
+  "offer-description": "Opis ogłoszenia",
+  "profession": "Profesja",
+  "salary-from": "Wynagrodzenie od",
+  "salaryMax": "Największe wynagrodzenie",
+  "salaryMin": "Najmniejsze wynagrodzenie",
+  "salary-to": "Wynagrodzenie do",
+  "search": "Szukaj",
+  "show-offer-details": "Pokaż szczegóły",
+  "sort-by": "Sortuj według",
+  "specialization": "Specjalizacja"
 }
