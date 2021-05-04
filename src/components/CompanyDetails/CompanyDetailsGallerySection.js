@@ -16,7 +16,7 @@ const CompanyDetailsGallerySection = ({ photos }) => {
       <Slider className="mb-5" {...sliderSettings}>
         {photos.map((photo) => (
           <div>
-            <img className="m-auto" src={photo.file_path} />
+            <img className="m-auto" alt={photo.name} src={photo.file_path} />
           </div>
         ))}
       </Slider>
