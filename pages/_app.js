@@ -1,5 +1,7 @@
 import React from 'react';
 import 'tailwindcss/tailwind.css';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 import { appWithTranslation } from 'next-i18next';
 import { ClientContextController } from '../src/context/clientContextController/ClientContextController';
 import { OffersContextController } from '../src/context/offersContextController/OffersContextController';
