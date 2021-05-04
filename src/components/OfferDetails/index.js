@@ -18,7 +18,7 @@ const OfferDetails = ({ offer }) => {
     );
   }
 
-  return '';
+  return "";
 };
 
 export default OfferDetails;

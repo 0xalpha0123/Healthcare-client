@@ -1,6 +1,6 @@
-import { useRouter } from 'next/router';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
+import { useRouter } from "next/router";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 
 const OfferCard = ({ offer }) => {
   const router = useRouter();
@@ -31,7 +31,7 @@ const OfferCard = ({ offer }) => {
             <hr className="my-1 w-36" />
             {offer.locations.map((location) => (
               <p className="px-1 text-sm text-gray-600">
-                <FontAwesomeIcon icon={faMapMarkerAlt} size={'xs'} />{' '}
+                <FontAwesomeIcon icon={faMapMarkerAlt} size={"xs"} />{" "}
                 <span>{location.city}</span>
               </p>
             ))}

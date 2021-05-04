@@ -1,12 +1,12 @@
-import { useRouter } from 'next/router';
-import dynamic from 'next/dynamic';
+import { useRouter } from "next/router";
+import dynamic from "next/dynamic";
 
-import Filters from './Filters';
-import Navbar from './Navbar';
+import Filters from "./Filters";
+import Navbar from "./Navbar";
 
 const Layout = ({ children, offers, filters, filtersData }) => {
   const router = useRouter();
-  const Map = dynamic(() => import('./Map/'), { ssr: false });
+  const Map = dynamic(() => import("./Map/"), { ssr: false });
 
   const onMarkerShowDetailsClick = (id) => {
     router.push(`/offer/${id}`);

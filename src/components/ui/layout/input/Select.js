@@ -1,5 +1,5 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
 
 const Select = ({ children, setValue, onClear, label, value }) => (
   <div className="relative bg-white inline-flex overflow-hidden border border-gray-200 rounded-md text-gray-600 h-11 w-40 mx-2 hover:border-gray-300">

@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from "next/link";
 
 const Navbar = () => (
   <nav className="flex justify-center h-16 shadow-lg border-b border-gray-200">
