@@ -41,6 +41,7 @@ const Map = ({ offers }) => {
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        className="z-10"
       />
       {offers.map((offer) =>
         offer.locations.map((location) => (

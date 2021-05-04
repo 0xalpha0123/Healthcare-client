@@ -4,19 +4,16 @@ import { config } from "../../config";
 import { requestHostInterceptor } from "../../api/interceptors/requestHostInterceptor/RequestHostInterceptor";
 import { requestQueryInterceptor } from "../../api/interceptors/requestQueryInterceptor/RequestQueryInterceptor";
 
-export const ClientContextController = ({ children }) => {
-  const baseUrl = config.api.url;
+const baseUrl = config.api.url;
+export const FetchClient = createClient({
+  requestInterceptors: [
+    requestHostInterceptor(baseUrl),
+    requestQueryInterceptor(),
+  ],
+});
 
-  const client = useMemo(
-    () =>
-      createClient({
-        requestInterceptors: [
-          requestHostInterceptor(baseUrl),
-          requestQueryInterceptor(),
-        ],
-      }),
-    []
-  );
+export const ClientContextController = ({ children }) => {
+  const client = useMemo(() => FetchClient, []);
 
   return (
     <ClientContextProvider client={client}>{children}</ClientContextProvider>

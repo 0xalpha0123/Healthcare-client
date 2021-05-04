@@ -23,6 +23,7 @@ module.exports = {
       black: colors.black,
       primary: '#2d64b3',
       secondary: '#ec3564',
+      red: colors.red,
     },
     fontFamily: {
       sans: ['Roboto', 'sans-serif'],
@@ -36,6 +37,9 @@ module.exports = {
       borderRadius: {
         '4xl': '2rem',
       },
+    },
+    zIndex: {
+      1000: 1000,
     },
   },
   variants: {
