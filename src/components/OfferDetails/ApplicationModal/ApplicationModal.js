@@ -1,7 +1,7 @@
 import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
 import { useMutation } from "react-fetching-library";
-import { postCandidate, postCv } from "../../../api/actions/candidateActions";
+import { postCandidateAction, postCvAction } from "../../../api/actions/candidateActions";
 import { useEffect, useState } from "react";
 import TextInput from "../../ui/layout/input/TextInput";
 import TextAreaInput from "../../ui/layout/input/TextAreaInput";
@@ -11,8 +11,8 @@ export const ApplicationModal = ({ isOpen, setOpen, setApplicationSent }) => {
   const { offerId } = router.query;
   const { t } = useTranslation("common");
 
-  const { mutate: mutateCandidate } = useMutation(postCandidate);
-  const { mutate: mutateCv } = useMutation(postCv);
+  const { mutate: mutateCandidate } = useMutation(postCandidateAction);
+  const { mutate: mutateCv } = useMutation(postCvAction);
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
