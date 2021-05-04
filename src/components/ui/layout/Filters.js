@@ -3,26 +3,23 @@ import { useEffect, useState } from 'react';
 import { useQuery } from 'react-fetching-library';
 import {
   getOffersAction,
-  getProfessionsAction,
-  getSpecializationsAction,
 } from '../../../api/actions/offerActions';
 import { StatusCodes } from 'http-status-codes';
-import { getUniqueLocations } from '../../../api/actions/companyActions';
 import { useTranslation } from 'next-i18next';
 
 import SearchInput from './input/SearchInput';
 import SalaryInput from './input/SalaryInput';
 import Select from './input/Select';
 
-const Filters = () => {
+const Filters = ({filtersData}) => {
   const offersContext = useOffersContext();
 
   const { t } = useTranslation('common');
 
   const [titleSearch, setTitleSearch] = useState('');
-  const [professionsList, setProfessionsList] = useState([]);
+  const [professionsList, setProfessionsList] = useState(filtersData.professions);
   const [specializationsList, setSpecializationsList] = useState([]);
-  const [locationsList, setLocationsList] = useState([]);
+  const [locationsList, setLocationsList] = useState(filtersData.locations);
 
   const [selectedProfession, setSelectedProfession] = useState(null);
   const [selectedSpecialization, setSelectedSpecialization] = useState(null);
@@ -43,31 +40,21 @@ const Filters = () => {
     }),
     false
   );
-  const { query: getProfessionsQuery } = useQuery(
-    getProfessionsAction(),
-    false
-  );
-  const { query: getSpecializationsQuery } = useQuery(
-    getSpecializationsAction({ professionId: selectedProfession }),
-    false
-  );
-
-  const { query: getLocationsQuery } = useQuery(getUniqueLocations(), false);
 
   useEffect(() => {
     (async () => {
       await Promise.all([
         loadOffers(),
-        loadProfessionsFilters(),
-        loadSpecializationsFilters(),
-        loadLocationsFilters(),
       ]);
     })();
   }, []);
 
   useEffect(() => {
     (async () => {
-      await Promise.all([loadSpecializationsFilters()]);
+      if(selectedProfession) {
+        setSpecializationsList(filtersData.specializations[selectedProfession] || [])
+        setSelectedSpecialization(null)
+      }
     })();
   }, [selectedProfession]);
 
@@ -86,32 +73,6 @@ const Filters = () => {
     const { payload, status } = await getOffersQuery();
     if (status === StatusCodes.OK) {
       offersContext.setOffersList(payload);
-    }
-  };
-
-  const loadProfessionsFilters = async () => {
-    const { payload, status } = await getProfessionsQuery();
-    if (status === StatusCodes.OK) {
-      setProfessionsList(payload);
-    }
-  };
-
-  const loadSpecializationsFilters = async () => {
-    if (!selectedProfession) {
-      return;
-    }
-
-    const { payload, status } = await getSpecializationsQuery();
-    if (status === StatusCodes.OK) {
-      setSpecializationsList(payload);
-      setSelectedSpecialization(null);
-    }
-  };
-
-  const loadLocationsFilters = async () => {
-    const { payload, status } = await getLocationsQuery();
-    if (status === StatusCodes.OK) {
-      setLocationsList(payload);
     }
   };
 
