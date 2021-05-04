@@ -7,14 +7,14 @@ import Layout from "../ui/layout/Layout";
 import OfferCard from "./OfferCard";
 import Select from "../ui/layout/input/Select";
 
-const OfferList = () => {
+const OfferList = ({filtersData}) => {
   const offersContext = useOffersContext();
   const { t } = useTranslation("common");
 
   useEffect(() => {}, [offersContext.offersList]);
 
   return (
-    <Layout offers={offersContext.offersList} filters={true}>
+    <Layout offers={offersContext.offersList} filtersData={filtersData} filters={true}>
       <div className="flex w-full p-2 justify-end items-center">
         {t("sort-by")}:
         <Select
