@@ -19,7 +19,7 @@ const OfferList = ({filtersData}) => {
         {t("sort-by")}:
         <Select
           value={offersContext.order}
-          onChange={(e) => offersContext.setOrder(e.target.value)}
+          setValue={offersContext.setOrder}
         >
           {Object.values(FiltersStates).map((filter) => (
             <option key={`state-${filter}`} value={filter}>
