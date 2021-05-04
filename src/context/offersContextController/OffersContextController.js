@@ -4,12 +4,12 @@ import { FiltersStates } from "../states";
 const OffersContext = createContext({
   offersList: [],
   setOffersList: null,
-    order: null,
-    setOrder: null,
+  order: null,
+  setOrder: null,
 });
 
-export const OffersContextController = ({ children }) => {
-  const [offersList, setOffersList] = useState([]);
+export const OffersContextController = ({ children, offers }) => {
+  const [offersList, setOffersList] = useState(offers);
   const [order, setOrder] = useState(FiltersStates.latest);
 
   return (
@@ -17,8 +17,8 @@ export const OffersContextController = ({ children }) => {
       value={{
         offersList,
         setOffersList,
-          order,
-          setOrder,
+        order,
+        setOrder,
       }}
     >
       {children}

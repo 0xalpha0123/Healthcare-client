@@ -4,7 +4,7 @@
 import Filters from './Filters';
 import Navbar from './Navbar';
 
-const Layout = ({ children, offers, filters }) => {
+const Layout = ({ children, offers, filters, filtersData }) => {
   // const router = useRouter();
   // const Map = dynamic(() => import('./Map/'), { ssr: false });
 
@@ -16,7 +16,7 @@ const Layout = ({ children, offers, filters }) => {
     <div className="flex flex-col h-screen">
       <div className="flex flex-col">
         <Navbar />
-        {filters ? <Filters /> : ''}
+        {filters ? <Filters filtersData={filtersData} /> : ''}
       </div>
       <div className="flex flex-grow overflow-hidden">
         {/* <div className="w-full overflow-scroll">{children}</div> */}

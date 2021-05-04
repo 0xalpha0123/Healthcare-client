@@ -1,5 +1,5 @@
 export const FiltersStates = {
   latest: "latest",
-  salaryMax: "salaryMax",
-  salaryMin: "salaryMin",
+  "salary-max": "salary-max",
+  "salary-min": "salary-min",
 };
