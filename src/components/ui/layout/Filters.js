@@ -1,25 +1,25 @@
-import { useOffersContext } from '../../../context/offersContextController/OffersContextController';
-import { useEffect, useState } from 'react';
-import { useQuery } from 'react-fetching-library';
+import { useOffersContext } from "../../../context/offersContextController/OffersContextController";
+import { useEffect, useState } from "react";
+import { useQuery } from "react-fetching-library";
 import {
   getOffersAction,
   getProfessionsAction,
   getSpecializationsAction,
-} from '../../../api/actions/offerActions';
-import { StatusCodes } from 'http-status-codes';
-import { getUniqueLocations } from '../../../api/actions/companyActions';
-import { useTranslation } from 'next-i18next';
+} from "../../../api/actions/offerActions";
+import { StatusCodes } from "http-status-codes";
+import { getUniqueLocations } from "../../../api/actions/companyActions";
+import { useTranslation } from "next-i18next";
 
-import SearchInput from './input/SearchInput';
-import SalaryInput from './input/SalaryInput';
-import Select from './input/Select';
+import SearchInput from "./input/SearchInput";
+import SalaryInput from "./input/SalaryInput";
+import Select from "./input/Select";
 
 const Filters = () => {
   const offersContext = useOffersContext();
 
-  const { t } = useTranslation('common');
+  const { t } = useTranslation("common");
 
-  const [titleSearch, setTitleSearch] = useState('');
+  const [titleSearch, setTitleSearch] = useState("");
   const [professionsList, setProfessionsList] = useState([]);
   const [specializationsList, setSpecializationsList] = useState([]);
   const [locationsList, setLocationsList] = useState([]);
@@ -123,7 +123,7 @@ const Filters = () => {
           loadOffers();
         }}
         onKeyDown={(event) => {
-          if (event.key === 'Enter') {
+          if (event.key === "Enter") {
             loadOffers();
           }
         }}
@@ -131,7 +131,7 @@ const Filters = () => {
         <SearchInput
           value={titleSearch}
           setValue={setTitleSearch}
-          placeholder={t('search')}
+          placeholder={t("search")}
         />
         <Select
           value={selectedLocation}
@@ -139,7 +139,7 @@ const Filters = () => {
           onChange={(e) => {
             setSelectedLocation(e.target.value);
           }}
-          label={t('location')}
+          label={t("location")}
         >
           {locationsList.map(({ city }) => (
             <option key={`location-${city}`} value={city}>
@@ -153,7 +153,7 @@ const Filters = () => {
           onChange={(e) => {
             setSelectedProfession(e.target.value);
           }}
-          label={t('profession')}
+          label={t("profession")}
         >
           {professionsList.map(({ id, name }) => (
             <option key={`profession-${id}`} value={id}>
@@ -168,7 +168,7 @@ const Filters = () => {
             e.preventDefault();
             setSelectedSpecialization(e.target.value);
           }}
-          label={t('specialization')}
+          label={t("specialization")}
         >
           {specializationsList.map(({ id, name }) => (
             <option key={`specialization-${id}`} value={id}>
@@ -177,15 +177,15 @@ const Filters = () => {
           ))}
         </Select>
         <SalaryInput
-          label={`${t('salary-from')}:`}
+          label={`${t("salary-from")}:`}
           value={salaryFrom}
-          placeholder={t('salary-from')}
+          placeholder={t("salary-from")}
           setValue={setSalaryFrom}
         />
         <SalaryInput
-          label={`${t('salary-to')}:`}
+          label={`${t("salary-to")}:`}
           value={salaryTo}
-          placeholder={t('salary-to')}
+          placeholder={t("salary-to")}
           setValue={setSalaryTo}
         />
       </form>

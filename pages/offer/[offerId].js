@@ -1,7 +1,7 @@
-import { useRouter } from 'next/router';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { useRouter } from "next/router";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
-import OfferDetails from '../../src/components/OfferDetails/index.js';
+import OfferDetails from "../../src/components/OfferDetails/index.js";
 
 export default function Home() {
   const router = useRouter();
@@ -13,12 +13,12 @@ export default function Home() {
 export const getStaticPaths = async () => {
   return {
     paths: [],
-    fallback: 'blocking',
+    fallback: "blocking",
   };
 };
 
 export const getStaticProps = async ({ locale }) => ({
   props: {
-    ...(await serverSideTranslations(locale, ['common'])),
+    ...(await serverSideTranslations(locale, ["common"])),
   },
 });
