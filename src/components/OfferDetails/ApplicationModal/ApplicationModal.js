@@ -48,7 +48,6 @@ export const ApplicationModal = ({ isOpen, setOpen, setApplicationSent }) => {
 
     const {
       error: candidateError,
-      payload: candidatePayload,
     } = await mutateCandidate({
       offerId,
       firstName,
