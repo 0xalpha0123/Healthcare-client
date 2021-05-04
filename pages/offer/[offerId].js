@@ -1,20 +1,24 @@
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import OfferDetails from '../../src/components/OfferDetails/index.js';
-import { getOfferAction } from "../../src/api/actions/offerActions";
-import { FetchClient } from "../../src/context/clientContextController/ClientContextController";
+import { useRouter } from "next/router";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
-export default function Home({offer}) {
-  return <OfferDetails offer={offer} />;
+import OfferDetails from "../../src/components/OfferDetails/index.js";
+
+export default function Home() {
+  const router = useRouter();
+  const { offerId } = router.query;
+
+  return <OfferDetails offerId={offerId} />;
 }
 
-export const getServerSideProps = async (ctx) => {
-
-  const { payload } =  await FetchClient.query(getOfferAction({ id: ctx.query.offerId }));
-
+export const getStaticPaths = async () => {
   return {
-    props: {
-      ...(await serverSideTranslations(ctx.locale, ['common'])),
-      offer: payload
-    },
-  }
+    paths: [],
+    fallback: "blocking",
+  };
 };
+
+export const getStaticProps = async ({ locale }) => ({
+  props: {
+    ...(await serverSideTranslations(locale, ["common"])),
+  },
+});

@@ -1,9 +1,7 @@
-import React from 'react';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import OfferList from '../src/components/OfferList';
-import {
-    OffersContextController,
-} from "../src/context/offersContextController/OffersContextController";
+import React from "react";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import OfferList from "../src/components/OfferList";
+import { OffersContextController } from "../src/context/offersContextController/OffersContextController";
 import { FetchClient } from "../src/context/clientContextController/ClientContextController";
 import { getOffersAction, getProfessionsAction, getSpecializationsAction } from "../src/api/actions/offerActions";
 import { getUniqueLocations } from "../src/api/actions/companyActions";

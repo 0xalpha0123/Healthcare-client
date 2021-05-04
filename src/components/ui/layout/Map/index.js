@@ -1,9 +1,9 @@
-import 'leaflet/dist/leaflet.css';
-import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css';
-import 'leaflet-defaulticon-compatibility';
-import { MapContainer, TileLayer } from 'react-leaflet';
+import "leaflet/dist/leaflet.css";
+import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
+import "leaflet-defaulticon-compatibility";
+import { MapContainer, TileLayer } from "react-leaflet";
 
-import MapMarker from './MapMarker';
+import MapMarker from "./MapMarker";
 
 const polandBoundsCoordSet = [
   [53.948, 14.56],
@@ -29,11 +29,12 @@ const Map = ({ onMarkerShowDetailsClick, offers }) => {
     <MapContainer
       bounds={mapBounds(offers)}
       scrollWheelZoom={true}
-      style={{ height: '100%', width: '100%' }}
+      style={{ height: "100%", width: "100%" }}
     >
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        className="z-10"
       />
       {offers.map((offer) =>
         offer.locations.map((location) => (
