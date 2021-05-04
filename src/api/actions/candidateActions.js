@@ -1,4 +1,4 @@
-export function postCandidate({
+export function postCandidateAction({
   offerId,
   firstName,
   lastName,
@@ -18,7 +18,7 @@ export function postCandidate({
   };
 }
 
-export function postCv(formData) {
+export function postCvAction(formData) {
   return {
     method: "POST",
     endpoint: "/candidates/upload-cv",
