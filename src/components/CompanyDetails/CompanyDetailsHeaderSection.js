@@ -2,6 +2,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 
 const CompanyDetailsHeaderSection = ({ company }) => {
+  console.log('>> company', company);
+
   return (
     <div className="flex flex-row shadow-md p-5 mb-5 bg-primary text-white rounded-md">
       <div className="w-1/4">

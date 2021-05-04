@@ -1,4 +1,4 @@
-// import Slider from 'react-slick';
+import Slider from 'react-slick';
 
 const CompanyDetailsGallerySection = ({ photos }) => {
   const sliderSettings = {
@@ -13,13 +13,13 @@ const CompanyDetailsGallerySection = ({ photos }) => {
 
   return (
     <div className="bg-white shadow-md p-5 rounded-md">
-      {/* <Slider className="mb-5" {...sliderSettings}>
+      <Slider className="mb-5" {...sliderSettings}>
         {photos.map((photo) => (
           <div>
             <img className="m-auto" src={photo.file_path} />
           </div>
         ))}
-      </Slider> */}
+      </Slider>
     </div>
   );
 };

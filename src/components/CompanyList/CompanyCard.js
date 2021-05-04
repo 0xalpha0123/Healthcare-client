@@ -1,6 +1,9 @@
 import { useRouter } from 'next/router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
+import {
+  faChevronRight,
+  faMapMarkerAlt,
+} from '@fortawesome/free-solid-svg-icons';
 
 const OfferCard = ({ company }) => {
   const router = useRouter();
@@ -29,13 +32,13 @@ const OfferCard = ({ company }) => {
           src={company.logo_file_path}
         />
       </div>
-      <div className="flex flex-grow">
-        <div className="flex flex-col w-1/2 ml-8">
+      <div className="flex flex-grow justify-between">
+        <div className="flex flex-col w-2/5 ml-8">
           <p className="text-2xl">{company.name}</p>
           <hr className="my-2" />
           <p className="text-xs">{companyDescription()}</p>
         </div>
-        <div className="flex flex-col justify-center ml-8">
+        <div className="flex flex-col justify-center">
           {company.locations.map((location) => (
             <p className="px-1 text-sm text-gray-600">
               <FontAwesomeIcon icon={faMapMarkerAlt} size={'xs'} />{' '}
@@ -44,6 +47,9 @@ const OfferCard = ({ company }) => {
               <span>{location.city}</span>
             </p>
           ))}
+        </div>
+        <div className="flex items-center mx-4 text-gray-300">
+          <FontAwesomeIcon icon={faChevronRight} size={'lg'} />
         </div>
       </div>
     </div>
