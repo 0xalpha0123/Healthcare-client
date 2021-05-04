@@ -28,8 +28,8 @@ const Filters = () => {
   const [selectedSpecialization, setSelectedSpecialization] = useState(null);
   const [selectedLocation, setSelectedLocation] = useState(null);
 
-  const [salaryFrom, setSalaryFrom] = useState(0);
-  const [salaryTo, setSalaryTo] = useState(20000);
+  const [salaryFrom, setSalaryFrom] = useState(null);
+  const [salaryTo, setSalaryTo] = useState(null);
 
   const { query: getOffersQuery } = useQuery(
     getOffersAction({
@@ -136,9 +136,7 @@ const Filters = () => {
         <Select
           value={selectedLocation}
           onClear={true}
-          onChange={(e) => {
-            setSelectedLocation(e.target.value);
-          }}
+          setValue={setSelectedLocation}
           label={t('location')}
         >
           {locationsList.map(({ city }) => (
@@ -150,9 +148,7 @@ const Filters = () => {
         <Select
           value={selectedProfession}
           onClear={true}
-          onChange={(e) => {
-            setSelectedProfession(e.target.value);
-          }}
+          setValue={setSelectedProfession}
           label={t('profession')}
         >
           {professionsList.map(({ id, name }) => (
@@ -164,10 +160,7 @@ const Filters = () => {
         <Select
           value={selectedSpecialization}
           onClear={true}
-          onChange={(e) => {
-            e.preventDefault();
-            setSelectedSpecialization(e.target.value);
-          }}
+          setValue={setSelectedSpecialization}
           label={t('specialization')}
         >
           {specializationsList.map(({ id, name }) => (
