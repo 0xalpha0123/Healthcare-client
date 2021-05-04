@@ -6,17 +6,14 @@ import { requestQueryInterceptor } from "../../api/interceptors/requestQueryInte
 
 const baseUrl = config.api.url;
 export const FetchClient = createClient({
-    requestInterceptors: [
-        requestHostInterceptor(baseUrl),
-        requestQueryInterceptor(),
-    ],
-})
+  requestInterceptors: [
+    requestHostInterceptor(baseUrl),
+    requestQueryInterceptor(),
+  ],
+});
 
 export const ClientContextController = ({ children }) => {
-  const client = useMemo(
-    () => FetchClient,
-    []
-  );
+  const client = useMemo(() => FetchClient, []);
 
   return (
     <ClientContextProvider client={client}>{children}</ClientContextProvider>

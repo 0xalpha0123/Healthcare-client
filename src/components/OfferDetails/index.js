@@ -1,12 +1,12 @@
-import { useQuery } from 'react-fetching-library';
+import { useQuery } from "react-fetching-library";
 
-import { getOfferAction } from '../../api/actions/offerActions';
+import { getOfferAction } from "../../api/actions/offerActions";
 
-import Layout from '../ui/layout/Layout';
-import ApplySection from './ApplySection';
-import CompanySection from './CompanySection';
-import HeaderSection from './HeaderSection';
-import OfferSection from './OfferSection';
+import Layout from "../ui/layout/Layout";
+import ApplySection from "./ApplySection";
+import CompanySection from "./CompanySection";
+import HeaderSection from "./HeaderSection";
+import OfferSection from "./OfferSection";
 
 const OfferDetails = ({ offerId }) => {
   const { payload } = useQuery(getOfferAction({ id: offerId }));
@@ -24,7 +24,7 @@ const OfferDetails = ({ offerId }) => {
     );
   }
 
-  return '';
+  return "";
 };
 
 export default OfferDetails;

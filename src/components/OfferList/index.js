@@ -1,23 +1,22 @@
-import { useEffect } from 'react';
-import { useOffersContext } from '../../context/offersContextController/OffersContextController';
-import { FiltersStates } from '../../context/states';
-import { useTranslation } from 'next-i18next';
+import { useEffect } from "react";
+import { useOffersContext } from "../../context/offersContextController/OffersContextController";
+import { FiltersStates } from "../../context/states";
+import { useTranslation } from "next-i18next";
 
-import Layout from '../ui/layout/Layout';
-import OfferCard from './OfferCard';
-import Select from '../ui/layout/input/Select';
+import Layout from "../ui/layout/Layout";
+import OfferCard from "./OfferCard";
+import Select from "../ui/layout/input/Select";
 
 const OfferList = () => {
   const offersContext = useOffersContext();
-  const { t } = useTranslation('common');
+  const { t } = useTranslation("common");
 
-  useEffect(() => {
-  }, [offersContext.offersList]);
+  useEffect(() => {}, [offersContext.offersList]);
 
   return (
     <Layout offers={offersContext.offersList} filters={true}>
       <div className="flex w-full p-2 justify-end items-center">
-        {t('sort-by')}:
+        {t("sort-by")}:
         <Select
           value={offersContext.order}
           onChange={(e) => offersContext.setOrder(e.target.value)}

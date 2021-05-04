@@ -1,12 +1,12 @@
-import { useRouter } from 'next/router';
-import dynamic from 'next/dynamic';
+import { useRouter } from "next/router";
+import dynamic from "next/dynamic";
 
-import Filters from './Filters';
-import Navbar from './Navbar';
+import Filters from "./Filters";
+import Navbar from "./Navbar";
 
 const Layout = ({ children, offers, filters }) => {
   const router = useRouter();
-  const Map = dynamic(() => import('./Map/'), { ssr: false });
+  const Map = dynamic(() => import("./Map/"), { ssr: false });
 
   const onMarkerShowDetailsClick = (id) => {
     router.push(`/offer/${id}`);
@@ -17,7 +17,7 @@ const Layout = ({ children, offers, filters }) => {
       {/* <Header /> */}
       <div className="flex flex-col">
         <Navbar />
-        {filters ? <Filters /> : ''}
+        {filters ? <Filters /> : ""}
       </div>
       <div className="flex flex-grow overflow-hidden">
         <div className="w-full overflow-scroll">{children}</div>

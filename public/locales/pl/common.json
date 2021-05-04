@@ -6,11 +6,17 @@
   "offer-description": "Opis ogłoszenia",
   "profession": "Profesja",
   "salary-from": "Wynagrodzenie od",
-  "salaryMax": "Największe wynagrodzenie",
-  "salaryMin": "Najmniejsze wynagrodzenie",
+  "salary-max": "Największe wynagrodzenie",
+  "salary-min": "Najmniejsze wynagrodzenie",
   "salary-to": "Wynagrodzenie do",
   "search": "Szukaj",
   "show-offer-details": "Pokaż szczegóły",
   "sort-by": "Sortuj według",
-  "specialization": "Specjalizacja"
+  "specialization": "Specjalizacja",
+  "application": "Aplikacja",
+  "reject-application": "Powrót",
+  "accept-application": "Aplikuj",
+  "application-sent": "Dziękujemy za złożenie aplikacji.",
+  "selected-file": "Wybrany plik: ",
+  "select-file": "Wybierz plik"
 }
