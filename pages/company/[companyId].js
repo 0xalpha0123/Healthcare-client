@@ -12,17 +12,16 @@ const Company = () => {
   const { companyId } = router.query;
 
   const { payload } = useQuery(getCompanyById({ id: companyId }));
-  console.log('>> company details', payload);
 
   if (payload) {
     return (
       <Layout>
-        <div className="flex w-full overflow-scroll">
-          <div className="flex flex-col p-5 bg-gray-100 w-full h-full">
+        <div className="flex w-full ">
+          <div className="flex flex-col p-5 bg-gray-100 w-full h-full overflow-scroll">
             <CompanyDetails company={payload} />
           </div>
-          <div className="w-full overflow-scroll shadow-mg">
-            <div className="flex p-4 flex-col">
+          <div className="w-full shadow-mg">
+            <div className="flex p-4 flex-col overflow-scroll">
               {payload.offers.map((offer) => (
                 <CompanyOfferCard offer={offer} />
               ))}

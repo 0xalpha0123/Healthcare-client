@@ -21,6 +21,8 @@ module.exports = {
       blue: colors.lightBlue,
       white: colors.white,
       black: colors.black,
+      primary: '#2d64b3',
+      secondary: '#ec3564',
     },
     fontFamily: {
       sans: ['Roboto', 'sans-serif'],
