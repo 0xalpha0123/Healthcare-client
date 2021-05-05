@@ -1,7 +1,7 @@
-import { getCompaniesAction } from '../../src/api/actions/companyActions';
 import { FetchClient } from '../../src/context/clientContextController/ClientContextController';
-import Layout from '../../src/components/ui/layout/Layout';
+import { getCompaniesAction } from '../../src/api/actions/companyActions';
 import CompanyCard from '../../src/components/CompanyList/CompanyCard';
+import Layout from '../../src/components/ui/layout/Layout';
 
 const Companies = ({ companies }) => {
   if (companies) {

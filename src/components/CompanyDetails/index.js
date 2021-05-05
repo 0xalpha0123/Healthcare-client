@@ -8,7 +8,7 @@ const CompanyDetails = ({ company }) => {
       <div>
         <CompanyDetailsHeaderSection company={company} />
         <CompanyDetailsDescriptionSection description={company.description} />
-        {company.photos ? (
+        {company.photos.length > 0 ? (
           <CompanyDetailsGallerySection photos={company.photos} />
         ) : (
           ''
