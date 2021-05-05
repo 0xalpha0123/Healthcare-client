@@ -5,7 +5,7 @@ export function getCompaniesAction() {
   };
 }
 
-export function getCompanyById({ id }) {
+export function getCompanyByIdAction({ id }) {
   return {
     method: 'GET',
     endpoint: `/companies/${id}`,
