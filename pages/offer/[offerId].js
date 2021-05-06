@@ -13,7 +13,7 @@ export default function Home({ offer }) {
   return (
     <div className="flex w-full">
       <OfferDetails offer={offer} />
-      <Map offers={[offer]} />
+      <Map data={[offer]} type={'offer'} />
     </div>
   );
 }
