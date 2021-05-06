@@ -16,37 +16,37 @@ const OfferList = ({ filtersData }) => {
   useEffect(() => {}, [offersContext.offersList]);
 
   return (
-    <Layout
-      offers={offersContext.offersList}
-      filtersData={filtersData}
-      filters={true}
-    >
-      <div className="flex flex-grow overflow-hidden">
-        <div className="w-full overflow-scroll">
-          <div className="flex w-full p-2 justify-end items-center">
-            {t('sort-by')}:
-            <Select
-              value={offersContext.order}
-              onChange={(e) => offersContext.setOrder(e.target.value)}
-            >
-              {Object.values(FiltersStates).map((filter) => (
-                <option key={`state-${filter}`} value={filter}>
-                  {t(filter)}
-                </option>
-              ))}
-            </Select>
-          </div>
-          <div className="flex px-4 flex-col">
-            {offersContext.offersList.map((offer) => (
-              <OfferCard offer={offer} />
+    // <Layout
+    //   offers={offersContext.offersList}
+    //   filtersData={filtersData}
+    //   filters={true}
+    // >
+    <div className="flex flex-grow w-full overflow-hidden">
+      <div className="w-full overflow-scroll">
+        <div className="flex w-full p-2 justify-end items-center">
+          {t('sort-by')}:
+          <Select
+            value={offersContext.order}
+            onChange={(e) => offersContext.setOrder(e.target.value)}
+          >
+            {Object.values(FiltersStates).map((filter) => (
+              <option key={`state-${filter}`} value={filter}>
+                {t(filter)}
+              </option>
             ))}
-          </div>
+          </Select>
         </div>
-        <div className="w-full">
-          <Map offers={offersContext.offersList} />
+        <div className="flex px-4 flex-col">
+          {offersContext.offersList.map((offer) => (
+            <OfferCard offer={offer} />
+          ))}
         </div>
       </div>
-    </Layout>
+      {/* <div className="w-full">
+          <Map offers={offersContext.offersList} />
+        </div> */}
+    </div>
+    // </Layout>
   );
 };
 

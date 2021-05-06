@@ -33,27 +33,29 @@ const Map = ({ offers }) => {
   };
 
   return (
-    <MapContainer
-      bounds={mapBounds(offers)}
-      scrollWheelZoom={true}
-      style={{ height: '100%', width: '100%' }}
-    >
-      <TileLayer
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-        className="z-10"
-      />
-      {offers.map((offer) =>
-        offer.locations.map((location) => (
-          <MapMarker
-            key={`marker-${offer.id}-${location.id}`}
-            location={location}
-            offer={offer}
-            onMarkerShowDetailsClick={onMarkerShowDetailsClick}
-          />
-        ))
-      )}
-    </MapContainer>
+    <div className="w-full h-full">
+      <MapContainer
+        bounds={mapBounds(offers)}
+        scrollWheelZoom={true}
+        style={{ height: '100%', width: '100%' }}
+      >
+        <TileLayer
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+          className="z-10"
+        />
+        {offers.map((offer) =>
+          offer.locations.map((location) => (
+            <MapMarker
+              key={`marker-${offer.id}-${location.id}`}
+              location={location}
+              offer={offer}
+              onMarkerShowDetailsClick={onMarkerShowDetailsClick}
+            />
+          ))
+        )}
+      </MapContainer>
+    </div>
   );
 };
 
