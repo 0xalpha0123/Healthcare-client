@@ -1,11 +1,17 @@
-import "leaflet/dist/leaflet.css";
-import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
-import "leaflet-defaulticon-compatibility";
-import { Marker, Popup } from "react-leaflet";
-import { useTranslation } from "next-i18next";
+import { useRouter } from 'next/router';
+import 'leaflet/dist/leaflet.css';
+import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css';
+import 'leaflet-defaulticon-compatibility';
+import { Marker, Popup } from 'react-leaflet';
+import { useTranslation } from 'next-i18next';
 
-const MapMarker = ({ onMarkerShowDetailsClick, offer, location }) => {
-  const { t } = useTranslation("common");
+const OfferMarker = ({ offer, location }) => {
+  const router = useRouter();
+  const { t } = useTranslation('common');
+
+  const onMarkerShowDetailsClick = (id) => {
+    router.push(`/offer/${id}`);
+  };
 
   return (
     <Marker
@@ -19,8 +25,8 @@ const MapMarker = ({ onMarkerShowDetailsClick, offer, location }) => {
             <img
               className="m-auto"
               style={{
-                maxHeight: "100px",
-                maxWidth: "100px",
+                maxHeight: '100px',
+                maxWidth: '100px',
               }}
               src={offer.company.logo_file_path}
             />
@@ -44,7 +50,7 @@ const MapMarker = ({ onMarkerShowDetailsClick, offer, location }) => {
               onMarkerShowDetailsClick(offer.id);
             }}
           >
-            {t("show-offer-details")}
+            {t('show-offer-details')}
           </button>
         </div>
       </Popup>
@@ -52,4 +58,4 @@ const MapMarker = ({ onMarkerShowDetailsClick, offer, location }) => {
   );
 };
 
-export default MapMarker;
+export default OfferMarker;

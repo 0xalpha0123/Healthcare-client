@@ -13,7 +13,7 @@ const OfferCard = ({ company }) => {
   };
 
   const companyDescription = () => {
-    const descriptionMaxLenght = 250;
+    const descriptionMaxLenght = 170;
 
     return company.description.length > descriptionMaxLenght
       ? company.description.substr(0, descriptionMaxLenght - 1) + '...'
@@ -33,7 +33,7 @@ const OfferCard = ({ company }) => {
         />
       </div>
       <div className="flex flex-grow justify-between">
-        <div className="flex flex-col w-2/5 ml-8">
+        <div className="flex flex-col w-1/2 ml-8">
           <p className="text-2xl">{company.name}</p>
           <hr className="my-2" />
           <p className="text-xs">{companyDescription()}</p>
@@ -48,7 +48,7 @@ const OfferCard = ({ company }) => {
             </p>
           ))}
         </div>
-        <div className="flex items-center mx-4 text-gray-300">
+        <div className="flex items-center mx-2 text-gray-300">
           <FontAwesomeIcon icon={faChevronRight} size={'lg'} />
         </div>
       </div>
