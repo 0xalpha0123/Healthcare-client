@@ -21,7 +21,7 @@ export default function Home({ offers, filtersData }) {
     <OffersContextController offers={offers}>
       <div className="flex flex-col w-full">
         <Filters filtersData={filtersData} />
-        <div className="flex w-full">
+        <div className="flex w-full overflow-hidden">
           <OfferList filtersData={filtersData} />
           <Map offers={offers} />
         </div>

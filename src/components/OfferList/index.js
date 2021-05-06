@@ -2,25 +2,17 @@ import { useEffect } from 'react';
 import { useOffersContext } from '../../context/offersContextController/OffersContextController';
 import { FiltersStates } from '../../context/states';
 import { useTranslation } from 'next-i18next';
-import dynamic from 'next/dynamic';
 
-import Layout from '../ui/layout/Layout';
 import OfferCard from './OfferCard';
 import Select from '../ui/layout/input/Select';
 
-const OfferList = ({ filtersData }) => {
-  const Map = dynamic(() => import('../ui/layout/Map/'), { ssr: false });
+const OfferList = () => {
   const offersContext = useOffersContext();
   const { t } = useTranslation('common');
 
   useEffect(() => {}, [offersContext.offersList]);
 
   return (
-    // <Layout
-    //   offers={offersContext.offersList}
-    //   filtersData={filtersData}
-    //   filters={true}
-    // >
     <div className="flex flex-grow w-full overflow-hidden">
       <div className="w-full overflow-scroll">
         <div className="flex w-full p-2 justify-end items-center">
@@ -42,11 +34,7 @@ const OfferList = ({ filtersData }) => {
           ))}
         </div>
       </div>
-      {/* <div className="w-full">
-          <Map offers={offersContext.offersList} />
-        </div> */}
     </div>
-    // </Layout>
   );
 };
 
