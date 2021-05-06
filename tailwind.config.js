@@ -39,7 +39,7 @@ module.exports = {
       },
     },
     zIndex: {
-      1000: 1000,
+      100: 100,
     },
   },
   variants: {

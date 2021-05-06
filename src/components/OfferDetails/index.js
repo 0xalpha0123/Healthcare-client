@@ -1,6 +1,5 @@
 import dynamic from 'next/dynamic';
 
-import Layout from '../ui/layout/Layout';
 import ApplySection from './ApplySection';
 import CompanySection from './CompanySection';
 import HeaderSection from './HeaderSection';
@@ -11,7 +10,7 @@ const OfferDetails = ({ offer }) => {
 
   if (offer) {
     return (
-      <Layout offers={[offer]}>
+      <div className="flex w-full">
         <div className="flex flex-col p-5 bg-gray-100 h-full w-full">
           <HeaderSection offer={offer} />
           <OfferSection description={offer.description} />
@@ -21,7 +20,7 @@ const OfferDetails = ({ offer }) => {
         <div className="w-full">
           <Map offers={[offer]} />
         </div>
-      </Layout>
+      </div>
     );
   }
 

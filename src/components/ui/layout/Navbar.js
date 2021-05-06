@@ -14,7 +14,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="flex justify-between h-16 shadow-lg border-b z-50 border-gray-200">
+    <nav className="flex justify-between h-16 shadow-lg border-b z-100 border-gray-200">
       <div></div>
       <div className="flex justify-center">
         <img
