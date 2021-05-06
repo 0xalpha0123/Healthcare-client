@@ -10,8 +10,8 @@ const OfferDetails = ({ offer }) => {
 
   if (offer) {
     return (
-      <div className="flex w-full">
-        <div className="flex flex-col p-5 bg-gray-100 h-full w-full">
+      <div className="flex w-full overflow-hidden">
+        <div className="flex flex-col p-5 bg-gray-100 h-full w-full overflow-scroll">
           <HeaderSection offer={offer} />
           <OfferSection description={offer.description} />
           <CompanySection description={offer.company.description} />

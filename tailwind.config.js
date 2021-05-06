@@ -40,6 +40,7 @@ module.exports = {
     },
     zIndex: {
       100: 100,
+      10000: 10000,
     },
   },
   variants: {
