@@ -1,9 +1,10 @@
-import "leaflet/dist/leaflet.css";
-import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
-import "leaflet-defaulticon-compatibility";
-import { MapContainer, TileLayer } from "react-leaflet";
+import 'leaflet/dist/leaflet.css';
+import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css';
+import 'leaflet-defaulticon-compatibility';
+import { MapContainer, TileLayer } from 'react-leaflet';
 
-import MapMarker from "./MapMarker";
+import CompanyMarker from './CompanyMarker';
+import OfferMarker from './OfferMarker';
 
 const polandBoundsCoordSet = [
   [53.948, 14.56],
@@ -11,14 +12,15 @@ const polandBoundsCoordSet = [
   [49.116, 22.516],
 ];
 
-const Map = ({ onMarkerShowDetailsClick, offers }) => {
-  const mapBounds = (offers) => {
-    if (offers.length === 0) {
+const Map = ({ data, type }) => {
+  console.log(data);
+  const mapBounds = (data) => {
+    if (data.length === 0) {
       return polandBoundsCoordSet;
     }
 
-    return offers.map((offer) =>
-      offer.locations.map((location) => [
+    return data.map((entity) =>
+      entity.locations.map((location) => [
         location.coordinates.x,
         location.coordinates.y,
       ])
@@ -26,27 +28,40 @@ const Map = ({ onMarkerShowDetailsClick, offers }) => {
   };
 
   return (
-    <MapContainer
-      bounds={mapBounds(offers)}
-      scrollWheelZoom={true}
-      style={{ height: "100%", width: "100%" }}
-    >
-      <TileLayer
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-        className="z-10"
-      />
-      {offers.map((offer) =>
-        offer.locations.map((location) => (
-          <MapMarker
-            key={`marker-${offer.id}-${location.id}`}
-            location={location}
-            offer={offer}
-            onMarkerShowDetailsClick={onMarkerShowDetailsClick}
-          />
-        ))
-      )}
-    </MapContainer>
+    <div className="w-full h-full">
+      <MapContainer
+        bounds={mapBounds(data)}
+        scrollWheelZoom={true}
+        style={{ height: '100%', width: '100%' }}
+      >
+        <TileLayer
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+          className="z-10"
+        />
+        {data.map((entity) =>
+          entity.locations.map((location) => {
+            if (type === 'offer') {
+              return (
+                <OfferMarker
+                  key={`marker-offer-${entity.id}-${location.id}`}
+                  location={location}
+                  offer={entity}
+                />
+              );
+            } else if (type === 'company') {
+              return (
+                <CompanyMarker
+                  key={`marker-company-${entity.id}-${location.id}`}
+                  location={location}
+                  company={entity}
+                />
+              );
+            }
+          })
+        )}
+      </MapContainer>
+    </div>
   );
 };
 
