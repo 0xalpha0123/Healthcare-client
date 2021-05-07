@@ -1,9 +1,7 @@
 import { useOffersContext } from '../../../context/offersContextController/OffersContextController';
 import { useEffect, useState } from 'react';
 import { useQuery } from 'react-fetching-library';
-import {
-  getOffersAction,
-} from '../../../api/actions/offerActions';
+import { getOffersAction } from '../../../api/actions/offerActions';
 import { StatusCodes } from 'http-status-codes';
 import { useTranslation } from 'next-i18next';
 
@@ -11,13 +9,15 @@ import SearchInput from './input/SearchInput';
 import SalaryInput from './input/SalaryInput';
 import Select from './input/Select';
 
-const Filters = ({filtersData}) => {
+const Filters = ({ filtersData }) => {
   const offersContext = useOffersContext();
 
   const { t } = useTranslation('common');
 
   const [titleSearch, setTitleSearch] = useState('');
-  const [professionsList, setProfessionsList] = useState(filtersData.professions);
+  const [professionsList, setProfessionsList] = useState(
+    filtersData.professions
+  );
   const [specializationsList, setSpecializationsList] = useState([]);
   const [locationsList, setLocationsList] = useState(filtersData.locations);
 
@@ -43,17 +43,17 @@ const Filters = ({filtersData}) => {
 
   useEffect(() => {
     (async () => {
-      await Promise.all([
-        loadOffers(),
-      ]);
+      await Promise.all([loadOffers()]);
     })();
   }, []);
 
   useEffect(() => {
     (async () => {
-      if(selectedProfession) {
-        setSpecializationsList(filtersData.specializations[selectedProfession] || [])
-        setSelectedSpecialization(null)
+      if (selectedProfession) {
+        setSpecializationsList(
+          filtersData.specializations[selectedProfession] || []
+        );
+        setSelectedSpecialization(null);
       }
     })();
   }, [selectedProfession]);
@@ -77,7 +77,7 @@ const Filters = ({filtersData}) => {
   };
 
   return (
-    <div className="flex flex-col justify-center px-3 h-16 shadow-md bg-primary">
+    <div className="flex flex-col justify-center p-3 min-h-16 shadow-md bg-primary">
       <form
         className="flex flex-wrap"
         onSubmit={(_) => {

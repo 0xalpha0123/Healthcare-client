@@ -4,10 +4,14 @@ import { appWithTranslation } from 'next-i18next';
 import { ClientContextController } from '../src/context/clientContextController/ClientContextController';
 import 'isomorphic-unfetch';
 
+import Layout from '../src/components/ui/layout/Layout';
+
 function MyApp({ Component, pageProps }) {
   return (
     <ClientContextController>
+      <Layout>
         <Component {...pageProps} />
+      </Layout>
     </ClientContextController>
   );
 }
