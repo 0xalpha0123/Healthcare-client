@@ -13,17 +13,13 @@ const polandBoundsCoordSet = [
 ];
 
 const Map = ({ data, type }) => {
-  console.log(data);
   const mapBounds = (data) => {
     if (data.length === 0) {
       return polandBoundsCoordSet;
     }
 
     return data.map((entity) =>
-      entity.locations.map((location) => [
-        location.coordinates.x,
-        location.coordinates.y,
-      ])
+      entity.locations.map((location) => [location.coordinates.x, location.coordinates.y])
     );
   };
 

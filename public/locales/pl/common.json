@@ -18,5 +18,8 @@
   "accept-application": "Aplikuj",
   "application-sent": "Dziękujemy za złożenie aplikacji.",
   "selected-file": "Wybrany plik: ",
-  "select-file": "Wybierz plik"
+  "select-file": "Wybierz plik",
+  "noOffers": "Brak ofert spełniających podane kryteria",
+  "companies": "Pracodawcy",
+  "offers": "Oferty"
 }

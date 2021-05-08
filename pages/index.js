@@ -19,7 +19,7 @@ export default function Home({ offers, filtersData }) {
 
   return (
     <OffersContextController offers={offers}>
-      <div className="flex flex-col w-full">
+      <div className="flex flex-col w-full h-full">
         <Filters filtersData={filtersData} />
         <div className="flex w-full overflow-hidden">
           <OfferList filtersData={filtersData} />
@@ -31,18 +31,10 @@ export default function Home({ offers, filtersData }) {
 }
 
 export const getServerSideProps = async (ctx) => {
-  const { payload: offersPayload } = await FetchClient.query(
-    getOffersAction({})
-  );
-  const { payload: specializationsPayload } = await FetchClient.query(
-    getSpecializationsAction({})
-  );
-  const { payload: locationsPayload } = await FetchClient.query(
-    getUniqueLocations({})
-  );
-  const { payload: professionsPayload } = await FetchClient.query(
-    getProfessionsAction({})
-  );
+  const { payload: offersPayload } = await FetchClient.query(getOffersAction({}));
+  const { payload: specializationsPayload } = await FetchClient.query(getSpecializationsAction({}));
+  const { payload: locationsPayload } = await FetchClient.query(getUniqueLocations({}));
+  const { payload: professionsPayload } = await FetchClient.query(getProfessionsAction({}));
 
   const groupBy = (key) => (array) =>
     array.reduce((objectsByKeyValue, obj) => {

@@ -5,6 +5,7 @@ import { useTranslation } from 'next-i18next';
 
 import OfferCard from './OfferCard';
 import Select from '../ui/layout/input/Select';
+import NoResults from '../ui/NoResults';
 
 const OfferList = () => {
   const offersContext = useOffersContext();
@@ -14,7 +15,7 @@ const OfferList = () => {
 
   return (
     <div className="flex flex-grow w-full overflow-hidden">
-      <div className="w-full overflow-scroll">
+      <div className="w-full">
         <div className="flex w-full p-2 justify-end items-center">
           {t('sort-by')}:
           <Select
@@ -29,9 +30,11 @@ const OfferList = () => {
           </Select>
         </div>
         <div className="flex px-4 flex-col">
-          {offersContext.offersList.map((offer) => (
-            <OfferCard offer={offer} />
-          ))}
+          {offersContext && offersContext.length ? (
+            offersContext.offersList.map((offer, key) => <OfferCard offer={offer} key={key} />)
+          ) : (
+            <NoResults message={t('noOffers')} />
+          )}
         </div>
       </div>
     </div>
