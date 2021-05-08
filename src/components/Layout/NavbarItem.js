@@ -9,9 +9,9 @@ function NavbarItem({ label, href, icon }) {
   return (
     <Link href={href}>
       <div
-        className={`cursor-pointer mx-4 hover:text-secondary transition duration-500 ${activeClass}`}
+        className={`cursor-pointer mx-4 hover:text-secondary transition duration-500 ${activeClass} text-xs md:text-base`}
       >
-        <FontAwesomeIcon icon={icon} size={'lg'} className="mr-2" />
+        <FontAwesomeIcon icon={icon} size={'lg'} className="mr-2 " />
         {label}
       </div>
     </Link>

@@ -10,7 +10,7 @@ import {
 import { getUniqueLocations } from '../src/api/actions/companyActions';
 import dynamic from 'next/dynamic';
 
-import Filters from '../src/components/ui/layout/Filters';
+import Filters from '../src/components/OfferList/Filters';
 
 export default function Home({ offers, filtersData }) {
   const Map = dynamic(() => import('../src/components/ui/layout/Map/'), {
