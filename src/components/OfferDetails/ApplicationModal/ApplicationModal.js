@@ -1,15 +1,15 @@
 import { useTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
 import { useMutation } from 'react-fetching-library';
-import {
-  postCandidateAction,
-  postCvAction,
-} from '../../../api/actions/candidateActions';
+import { postCandidateAction, postCvAction } from '../../../api/actions/candidateActions';
 import { useEffect, useState } from 'react';
-import TextInput from '../../ui/layout/input/TextInput';
-import TextAreaInput from '../../ui/layout/input/TextAreaInput';
+import Input from '../../ui/forms/Input';
+import Textarea from '../../ui/forms/Textarea';
+import Card from '../../ui/Card';
+import FileInput from '../../ui/forms/FileInput';
+import Link from 'next/link';
 
-export const ApplicationModal = ({ isOpen, setOpen, setApplicationSent }) => {
+export const ApplicationModal = ({ isOpen, setOpen }) => {
   const router = useRouter();
   const { offerId } = router.query;
   const { t } = useTranslation('common');
@@ -20,6 +20,8 @@ export const ApplicationModal = ({ isOpen, setOpen, setApplicationSent }) => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [message, setMessage] = useState('');
+  const [showValidation, setShowValidation] = useState('');
+  const [applicationSent, setApplicationSent] = useState('');
   const [file, setFile] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
 
@@ -30,6 +32,7 @@ export const ApplicationModal = ({ isOpen, setOpen, setApplicationSent }) => {
       setLastName('');
       setMessage('');
       setErrorMessage(null);
+      setShowValidation(false);
     }
   }, [isOpen]);
 
@@ -38,6 +41,8 @@ export const ApplicationModal = ({ isOpen, setOpen, setApplicationSent }) => {
   };
 
   const onSubmit = async (e) => {
+    setShowValidation(true);
+    if (!file || !firstName || !lastName) return;
     const formData = new FormData();
     formData.append('file', file);
 
@@ -62,84 +67,96 @@ export const ApplicationModal = ({ isOpen, setOpen, setApplicationSent }) => {
     }
 
     setApplicationSent(true);
-    setOpen(false);
+    setShowValidation(false);
   };
 
   return (
     isOpen && (
-      <>
-        <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-10000 outline-none focus:outline-none">
-          <div className="relative w-auto my-6 mx-auto max-w-3xl">
-            <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
-              <div className="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
-                <h3 className="text-3xl font-semibold">{t('application')}</h3>
-              </div>
-              <div className="relative p-6 px-12 justify-between flex-auto">
-                <form>
-                  <div className="flex flex-col items-center justify-between space-y-4">
-                    <TextInput
-                      value={firstName}
-                      setValue={setFirstName}
-                      placeholder={'Imię'}
-                    />
-                    <TextInput
-                      value={lastName}
-                      setValue={setLastName}
-                      placeholder={'Nazwisko'}
-                    />
-                    <div className="h-32">
-                      <TextAreaInput
-                        value={message}
-                        setValue={setMessage}
-                        placeholder={'Wiadomość'}
-                      />
-                    </div>
-                    <div className="flex items-center justify-center bg-grey-lighter">
-                      <label className="w-40 flex flex-col items-center px-4 py-6 bg-white text-blue rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:bg-blue hover:text-white">
-                        <svg
-                          className="w-8 h-8"
-                          fill="currentColor"
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 20 20"
+      <div>
+        <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-10000 outline-none focus:outline-none bg-black bg-opacity-50">
+          <div className="relative my-6 w-11/12 md:w-1/2">
+            <Card>
+              {applicationSent ? (
+                <div className="bg-green-100  rounded-b  px-4 py-3 shadow-md" role="alert">
+                  <div className="flex justify-center">
+                    <div className="text-center">
+                      <div className="text-xl">{t('applicationSentSuccessfully')}</div>
+                      <div className="py-2">{t('applicationSentSuccessfully2')}</div>
+                      <Link href="/">
+                        <button
+                          className="bg-green-600  py-2 px-6 uppercase text-white text-center rounded-xl cursor-pointer hover:bg-secondary"
+                          type="button"
                         >
-                          <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
-                        </svg>
-                        <span className="mt-2 text-base leading-normal">
-                          {t('select-file')}
-                        </span>
-                        <input
-                          type="file"
-                          className="hidden"
-                          onChange={onFileChange}
-                        />
-                      </label>
+                          {t('goHomepage')}
+                        </button>
+                      </Link>
                     </div>
-                    <div>{file?.name && t('selected-file') + file?.name}</div>
-                    <div className="text-red-600">{errorMessage}</div>
                   </div>
-                </form>
-              </div>
-              <div className="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
-                <button
-                  className="w-36 p-2 uppercase text-center rounded-xl cursor-pointer hover:bg-secondary"
-                  type="button"
-                  onClick={() => setOpen(false)}
-                >
-                  {t('reject-application')}
-                </button>
-                <button
-                  className="bg-primary w-36 p-2 uppercase text-white text-center rounded-xl cursor-pointer hover:bg-secondary"
-                  type="button"
-                  onClick={onSubmit}
-                >
-                  {t('accept-application')}
-                </button>
-              </div>
-            </div>
+                </div>
+              ) : (
+                <>
+                  <div className="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
+                    <h3 className="text-2xl font-semibold text-center md:text-left">
+                      {t('sendApplication')}
+                    </h3>
+                  </div>
+                  <div className="relative p-6 md:px-12 justify-between flex-auto">
+                    <form>
+                      <div className="">
+                        <div className="flex flex-wrap">
+                          <Input
+                            value={firstName}
+                            setValue={setFirstName}
+                            label={t('firstName')}
+                            className="my-4 w-full md:w-1/2 px-1"
+                            error={showValidation && !firstName && t('required')}
+                          />
+
+                          <Input
+                            value={lastName}
+                            setValue={setLastName}
+                            label={t('lastName')}
+                            className="my-4 w-full md:w-1/2 px-1"
+                            error={showValidation && !lastName && t('required')}
+                          />
+                        </div>
+
+                        <Textarea value={message} setValue={setMessage} label={t('message')} />
+                        <div className="flex justify-center">
+                          <FileInput
+                            label={file ? file.name : t('selectFile')}
+                            onChange={onFileChange}
+                            className="py-2"
+                            error={showValidation && !file && t('required')}
+                          />
+                        </div>
+
+                        <div className="text-red-600">{errorMessage}</div>
+                      </div>
+                    </form>
+                  </div>
+                  <div className="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
+                    <button
+                      className="w-36 p-2 uppercase text-center rounded-xl cursor-pointer hover:bg-secondary"
+                      type="button"
+                      onClick={() => setOpen(false)}
+                    >
+                      {t('reject-application')}
+                    </button>
+                    <button
+                      className="bg-primary w-36 p-2 uppercase text-white text-center rounded-xl cursor-pointer hover:bg-secondary"
+                      type="button"
+                      onClick={onSubmit}
+                    >
+                      {t('accept-application')}
+                    </button>
+                  </div>
+                </>
+              )}
+            </Card>
           </div>
         </div>
-        <div className="opacity-25 fixed inset-0 z-40 bg-black" />
-      </>
+      </div>
     )
   );
 };

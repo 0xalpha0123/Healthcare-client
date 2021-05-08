@@ -15,7 +15,6 @@ export default function Home({ offers, filtersData }) {
   const OfferMap = dynamic(() => import('../src/components/OfferMap'), {
     ssr: false,
   });
-  console.log(offers);
 
   return (
     <OffersContextController offers={offers}>
@@ -26,7 +25,7 @@ export default function Home({ offers, filtersData }) {
         <div className="flex w-full md:h-5/6 pt-4 md:pt-0">
           <OfferList filtersData={filtersData} />
           <div className="w-full hidden md:block">
-            <OfferMap offers={offers} />
+            <OfferMap />
           </div>
         </div>
       </div>

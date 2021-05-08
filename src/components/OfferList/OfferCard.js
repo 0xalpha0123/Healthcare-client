@@ -10,12 +10,14 @@ import Card from '../ui/Card';
 import { useTranslation } from 'react-i18next';
 import IconInfo from './IconInfo';
 
-const OfferCard = ({ offer }) => {
+const OfferCard = ({ offer, type = 'dynamic' }) => {
   const router = useRouter();
   const { t } = useTranslation('common');
 
   const goToOffer = (id) => {
-    router.push(`/offer/${id}`);
+    if (type === 'dynamic') {
+      router.push(`/offer/${id}`);
+    }
   };
 
   return (

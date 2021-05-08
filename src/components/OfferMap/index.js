@@ -2,20 +2,19 @@ import { useOffersContext } from '../../context/offersContextController/OffersCo
 import Map from '../ui/Map';
 import OfferMarker from './OfferMarker';
 
-function OfferMap() {
+function OfferMap({ offer, hidePopups = false }) {
   const offersContext = useOffersContext();
-
-  const markers = offersContext.offersList.map((entity) =>
+  const list = offersContext.offersList.length ? offersContext.offersList : [offer];
+  const markers = list.map((entity) =>
     entity.locations.map((location) => (
       <OfferMarker
         key={`marker-offer-${entity.id}-${location.id}`}
         location={location}
-        offer={entity}
+        offer={hidePopups ? null : entity}
       />
     ))
   );
-
-  const bounds = offersContext.offersList.map((entity) =>
+  let bounds = list.map((entity) =>
     entity.locations.map((location) => [location.coordinates.x, location.coordinates.y])
   );
 
