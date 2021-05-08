@@ -11,9 +11,13 @@ export default function Home({ offer }) {
   });
 
   return (
-    <div className="flex w-full">
-      <OfferDetails offer={offer} />
-      <OfferMap offers={[offer]} />
+    <div className="flex w-full h-full">
+      <div className="w-full">
+        <OfferDetails offer={offer} />
+      </div>
+      <div className=" w-full ml-1 hidden md:block">
+        <OfferMap offer={offer} hidePopups />
+      </div>
     </div>
   );
 }

@@ -1,8 +1,18 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
-function Input({ value = '', setValue, placeholder, type = 'text', label, onClear }) {
+import Alert from '../Alert';
+function Input({
+  value = '',
+  setValue,
+  placeholder,
+  type = 'text',
+  label,
+  onClear,
+  className = '',
+  error = '',
+}) {
   return (
-    <div>
+    <div className={className}>
       {(onClear || label) && (
         <div className="text-center pb-1 flex justify-center align-center">
           <div className="text-xs mr-2">{label}</div>
@@ -24,6 +34,7 @@ function Input({ value = '', setValue, placeholder, type = 'text', label, onClea
         type={type}
         onChange={(e) => setValue(e.target.value)}
       />
+      {error && <Alert>{error}</Alert>}
     </div>
   );
 }

@@ -26,5 +26,14 @@
   "to": "do",
   "salary": "Wynagrodzenie (PLN)",
   "title": "Nazwa oferty",
-  "currency": "PLN"
+  "currency": "PLN",
+  "firstName": "Imię",
+  "lastName": "Nazwisko",
+  "message": "Wiadomość",
+  "selectFile": "Wybierz plik",
+  "required": "To pole jest wymagane",
+  "sendApplication": "Wyślij aplikację!",
+  "applicationSentSuccessfully": "Aplikacja została pomyślnie wysłana!",
+  "applicationSentSuccessfully2": "Ogłoszeniodawca powinien skontaktować się z Tobą w ciągu kilku dni roboczych.",
+  "goHomepage": "Przejdź na stronę główną"
 }

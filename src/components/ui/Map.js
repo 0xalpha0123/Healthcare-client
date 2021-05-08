@@ -10,10 +10,13 @@ const defaultBounds = [
 ];
 
 const Map = ({ markers, bounds }) => {
+  console.log('bounds:');
+  console.log(bounds);
   return (
     <div className="w-full h-full">
       <MapContainer
         bounds={bounds || defaultBounds}
+        boundsOptions={{ padding: [25, 25] }}
         scrollWheelZoom={true}
         style={{ height: '100%', width: '100%' }}
       >

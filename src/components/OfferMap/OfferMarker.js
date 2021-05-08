@@ -21,38 +21,40 @@ const OfferMarker = ({ offer, location }) => {
       draggable={false}
       animate={true}
     >
-      <Popup>
-        <div className="flex">
-          <div className="self-center mr-2">
-            <img
-              className="m-auto"
-              style={{
-                maxHeight: '100px',
-                maxWidth: '100px',
+      {offer && (
+        <Popup>
+          <div className="flex">
+            <div className="self-center mr-2">
+              <img
+                className="m-auto"
+                style={{
+                  maxHeight: '100px',
+                  maxWidth: '100px',
+                }}
+                src={offer.company.logo_file_path}
+              />
+            </div>
+            <div className="flex flex-col ml-2">
+              <span className="block my-1 font-bold text-lg leading-5">{offer.title}</span>
+              <IconInfo icon={faClinicMedical} label={offer.company.name} />
+              <IconInfo icon={faMarker} label={`${location.street}, ${location.city}`} />
+              <span className="block my-1 flex-grow font-bold text-lg text-accent px-2">
+                {`${offer.salary_from} - ${offer.salary_to} PLN`}
+              </span>
+            </div>
+          </div>
+          <div className="text-center py-2">
+            <button
+              className=" w-1/2 bg-primary hover:bg-secondary text-white font-bold p-1 rounded transition duration-500"
+              onClick={() => {
+                onMarkerShowDetailsClick(offer.id);
               }}
-              src={offer.company.logo_file_path}
-            />
+            >
+              {t('show-offer-details')}
+            </button>
           </div>
-          <div className="flex flex-col ml-2">
-            <span className="block my-1 font-bold text-lg leading-5">{offer.title}</span>
-            <IconInfo icon={faClinicMedical} label={offer.company.name} />
-            <IconInfo icon={faMarker} label={`${location.street}, ${location.city}`} />
-            <span className="block my-1 flex-grow font-bold text-lg text-accent px-2">
-              {`${offer.salary_from} - ${offer.salary_to} PLN`}
-            </span>
-          </div>
-        </div>
-        <div className="text-center py-2">
-          <button
-            className=" w-1/2 bg-primary hover:bg-secondary text-white font-bold p-1 rounded transition duration-500"
-            onClick={() => {
-              onMarkerShowDetailsClick(offer.id);
-            }}
-          >
-            {t('show-offer-details')}
-          </button>
-        </div>
-      </Popup>
+        </Popup>
+      )}
     </Marker>
   );
 };
