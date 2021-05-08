@@ -7,7 +7,7 @@ const Navbar = () => {
   const { t } = useTranslation('common');
 
   return (
-    <nav className="flex justify-center md:justify-between items-center p-10 border-b border-grey flex-wrap">
+    <nav className="flex justify-center md:justify-between items-center p-10 border-b border-grey flex-wrap md:h-navbar">
       <div className="w-full md:max-w-xs flex justify-center">
         <Link href="/">
           <img src="/img/logo.svg" className="cursor-pointer" />

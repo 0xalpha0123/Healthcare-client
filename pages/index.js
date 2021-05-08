@@ -1,5 +1,5 @@
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import OfferList from '../src/components/OfferList';
+import dynamic from 'next/dynamic';
 import { OffersContextController } from '../src/context/offersContextController/OffersContextController';
 import { FetchClient } from '../src/context/clientContextController/ClientContextController';
 import {
@@ -8,22 +8,26 @@ import {
   getSpecializationsAction,
 } from '../src/api/actions/offerActions';
 import { getUniqueLocations } from '../src/api/actions/companyActions';
-import dynamic from 'next/dynamic';
-
+import OfferList from '../src/components/OfferList';
 import Filters from '../src/components/OfferList/Filters';
 
 export default function Home({ offers, filtersData }) {
-  const Map = dynamic(() => import('../src/components/ui/layout/Map/'), {
+  const OfferMap = dynamic(() => import('../src/components/OfferMap'), {
     ssr: false,
   });
+  console.log(offers);
 
   return (
     <OffersContextController offers={offers}>
-      <div className="flex flex-col w-full h-full">
-        <Filters filtersData={filtersData} />
-        <div className="flex w-full overflow-hidden">
+      <div className="h-full">
+        <div className="md:h-1/6">
+          <Filters filtersData={filtersData} />
+        </div>
+        <div className="flex w-full md:h-5/6 pt-4 md:pt-0">
           <OfferList filtersData={filtersData} />
-          <Map data={offers} type="offer" />
+          <div className="w-full hidden md:block">
+            <OfferMap offers={offers} />
+          </div>
         </div>
       </div>
     </OffersContextController>

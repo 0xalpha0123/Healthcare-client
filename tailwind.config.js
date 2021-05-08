@@ -24,6 +24,7 @@ module.exports = {
       primary: '#2d64b3',
       secondary: '#ec3564',
       red: colors.red,
+      accent: '#1ec66c',
     },
     fontFamily: {
       sans: ['Roboto', 'sans-serif'],
@@ -36,6 +37,10 @@ module.exports = {
       },
       borderRadius: {
         '4xl': '2rem',
+      },
+      height: {
+        navbar: '10%',
+        wrapper: '90%',
       },
     },
     zIndex: {

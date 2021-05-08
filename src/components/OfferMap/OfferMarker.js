@@ -4,6 +4,8 @@ import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility
 import 'leaflet-defaulticon-compatibility';
 import { Marker, Popup } from 'react-leaflet';
 import { useTranslation } from 'next-i18next';
+import IconInfo from '../OfferList/IconInfo';
+import { faClinicMedical, faMarker } from '@fortawesome/free-solid-svg-icons';
 
 const OfferMarker = ({ offer, location }) => {
   const router = useRouter();
@@ -32,20 +34,17 @@ const OfferMarker = ({ offer, location }) => {
             />
           </div>
           <div className="flex flex-col ml-2">
-            <span className="block my-1 font-bold text-lg leading-5">
-              {offer.title}
-            </span>
-            <hr />
-            <span className="block my-1 font-bold">{offer.company.name}</span>
-            <address>{`${location.street}, ${location.city}`}</address>
-            <span className="block my-1 flex-grow font-bold text-lg">
+            <span className="block my-1 font-bold text-lg leading-5">{offer.title}</span>
+            <IconInfo icon={faClinicMedical} label={offer.company.name} />
+            <IconInfo icon={faMarker} label={`${location.street}, ${location.city}`} />
+            <span className="block my-1 flex-grow font-bold text-lg text-accent px-2">
               {`${offer.salary_from} - ${offer.salary_to} PLN`}
             </span>
           </div>
         </div>
-        <div>
+        <div className="text-center py-2">
           <button
-            className="block w-full bg-primary hover:bg-secondary text-white font-bold p-1 rounded"
+            className=" w-1/2 bg-primary hover:bg-secondary text-white font-bold p-1 rounded transition duration-500"
             onClick={() => {
               onMarkerShowDetailsClick(offer.id);
             }}
