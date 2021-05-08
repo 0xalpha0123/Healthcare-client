@@ -6,9 +6,6 @@ import { StatusCodes } from 'http-status-codes';
 import { useTranslation } from 'next-i18next';
 import Input from '../ui/forms/Input';
 import Select from '../ui/forms/Select';
-// import SearchInput from '../ui/layout/input/SearchInput';
-import SalaryInput from '../ui/layout/input/SalaryInput';
-// import Select from '../ui/layout/input/Select';
 import Card from '../ui/Card';
 
 const Filters = ({ filtersData }) => {
@@ -70,7 +67,7 @@ const Filters = ({ filtersData }) => {
   };
 
   return (
-    <Card className="pt-0">
+    <Card className="m-auto">
       <form
         className="flex flex-wrap md:justify-center"
         onSubmit={(_) => {
@@ -121,27 +118,23 @@ const Filters = ({ filtersData }) => {
         <div className="w-full sm: w-1/2 md:w-2/12 p-2 ">
           <div className="text-center pb-1 text-xs">{t('salary')}</div>
           <div className="flex">
-            <Input
-              value={salaryFrom}
-              placeholder={t('to')}
-              setValue={setSalaryFrom}
-              type="number"
-            />
-            <Input value={salaryTo} placeholder={t('from')} setValue={setSalaryTo} type="number" />
+            <div className="w-1/2">
+              <Input
+                value={salaryFrom}
+                placeholder={t('to')}
+                setValue={setSalaryFrom}
+                type="number"
+              />
+            </div>
+            <div className="w-1/2">
+              <Input
+                value={salaryTo}
+                placeholder={t('from')}
+                setValue={setSalaryTo}
+                type="number"
+              />
+            </div>
           </div>
-
-          {/* <SalaryInput
-            label={`${t('salary-from')}:`}
-            value={salaryFrom}
-            placeholder={t('salary-from')}
-            setValue={setSalaryFrom}
-          />
-          <SalaryInput
-            label={`${t('salary-to')}:`}
-            value={salaryTo}
-            placeholder={t('salary-to')}
-            setValue={setSalaryTo}
-          /> */}
         </div>
       </form>
     </Card>

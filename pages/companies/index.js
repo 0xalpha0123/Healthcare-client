@@ -6,7 +6,7 @@ import { getCompaniesAction } from '../../src/api/actions/companyActions';
 import CompanyCard from '../../src/components/CompanyList/CompanyCard';
 
 const Companies = ({ companies }) => {
-  const Map = dynamic(() => import('../../src/components/ui/layout/Map/'), {
+  const CompanyMap = dynamic(() => import('../../src/components/CompanyMap'), {
     ssr: false,
   });
 
@@ -18,7 +18,7 @@ const Companies = ({ companies }) => {
             <CompanyCard company={company} />
           ))}
         </div>
-        <Map data={companies} type="company" />
+        <CompanyMap companies={companies} />
       </div>
     );
   }

@@ -1,0 +1,15 @@
+.list {
+  width: 100%;
+  overflow: auto;
+  margin-right: 5px;
+}
+
+.list::-webkit-scrollbar {
+  border-radius: 5px;
+  width: 10px;
+}
+.list::-webkit-scrollbar-thumb {
+  background-color: lightgray;
+  border-radius: 10px;
+  height: 4px;
+}

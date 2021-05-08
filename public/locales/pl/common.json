@@ -25,5 +25,6 @@
   "from": "od",
   "to": "do",
   "salary": "Wynagrodzenie (PLN)",
-  "title": "Nazwa oferty"
+  "title": "Nazwa oferty",
+  "currency": "PLN"
 }
