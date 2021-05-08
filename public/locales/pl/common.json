@@ -4,12 +4,12 @@
   "latest": "Najnowsze",
   "location": "Lokalizacja",
   "offer-description": "Opis ogłoszenia",
-  "profession": "Profesja",
+  "profession": "Zawód",
   "salary-from": "Wynagrodzenie od",
   "salary-max": "Największe wynagrodzenie",
   "salary-min": "Najmniejsze wynagrodzenie",
   "salary-to": "Wynagrodzenie do",
-  "search": "Szukaj",
+  "search": "Szukaj...",
   "show-offer-details": "Pokaż szczegóły",
   "sort-by": "Sortuj według",
   "specialization": "Specjalizacja",
@@ -21,5 +21,9 @@
   "select-file": "Wybierz plik",
   "noOffers": "Brak ofert spełniających podane kryteria",
   "companies": "Pracodawcy",
-  "offers": "Oferty"
+  "offers": "Oferty",
+  "from": "od",
+  "to": "do",
+  "salary": "Wynagrodzenie (PLN)",
+  "title": "Nazwa oferty"
 }
