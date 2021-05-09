@@ -10,7 +10,7 @@ import Card from '../ui/Card';
 import { useTranslation } from 'react-i18next';
 import IconInfo from './IconInfo';
 
-const OfferCard = ({ offer, type = 'dynamic' }) => {
+const OfferCard = ({ offer, type = 'dynamic', hideCompany }) => {
   const router = useRouter();
   const { t } = useTranslation('common');
 
@@ -23,9 +23,12 @@ const OfferCard = ({ offer, type = 'dynamic' }) => {
   return (
     <div onClick={() => goToOffer(offer.id)}>
       <Card key={`offer-${offer.id}`} className="flex  hover:border-gray-300 m-2 cursor-pointer">
-        <div className="flex justify-center align-center w-24">
-          <img className="self-center max-w-full max-h-full" src={offer.company.logo_file_path} />
-        </div>
+        {!hideCompany && (
+          <div className="flex justify-center align-center w-24">
+            <img className="self-center max-w-full max-h-full" src={offer.company.logo_file_path} />
+          </div>
+        )}
+
         <div className="w-full ml-6">
           <div className="flex justify-between pb-4 flex-wrap">
             <div className="flex flex-grow  md:text-lg font-bold pb-3">
@@ -40,7 +43,7 @@ const OfferCard = ({ offer, type = 'dynamic' }) => {
             </div>
           </div>
           <div className="flex align-center flex-wrap">
-            <IconInfo label={offer.company.name} icon={faClinicMedical} />
+            {!hideCompany && <IconInfo label={offer.company.name} icon={faClinicMedical} />}
             <IconInfo
               label={offer.locations.map((el) => el.city).join(', ')}
               icon={faMapMarkerAlt}

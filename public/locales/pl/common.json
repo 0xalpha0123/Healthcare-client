@@ -37,5 +37,9 @@
   "applicationSentSuccessfully2": "Ogłoszeniodawca powinien skontaktować się z Tobą w ciągu kilku dni roboczych.",
   "goHomepage": "Przejdź na stronę główną",
   "companyName": "Nazwa firmy",
-  "noCompanies": "Brak firm spełniających podane kryteria"
+  "noCompanies": "Brak firm spełniających podane kryteria",
+  "companyPresentation": "Prezentacja firmy",
+  "companyGallery": "Galeria firmy",
+  "companyOffers": "Lista aktualnych ofert firmy",
+  "noCompanyOffers": "Firma nie posiada aktualnie aktywnych ofert."
 }
