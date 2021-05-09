@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useOffersContext } from '../../context/offersContextController/OffersContextController';
+import { useOffersContext } from '../../context/OffersContextController';
 import { FiltersStates } from '../../context/states';
 import { useTranslation } from 'next-i18next';
 

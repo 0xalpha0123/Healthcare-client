@@ -35,5 +35,6 @@
   "sendApplication": "Wyślij aplikację!",
   "applicationSentSuccessfully": "Aplikacja została pomyślnie wysłana!",
   "applicationSentSuccessfully2": "Ogłoszeniodawca powinien skontaktować się z Tobą w ciągu kilku dni roboczych.",
-  "goHomepage": "Przejdź na stronę główną"
+  "goHomepage": "Przejdź na stronę główną",
+  "companyName": "Nazwa firmy"
 }
