@@ -10,8 +10,6 @@ const defaultBounds = [
 ];
 
 const Map = ({ markers, bounds }) => {
-  console.log('bounds:');
-  console.log(bounds);
   return (
     <div className="w-full h-full">
       <MapContainer

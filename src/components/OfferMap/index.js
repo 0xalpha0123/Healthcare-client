@@ -1,10 +1,10 @@
-import { useOffersContext } from '../../context/offersContextController/OffersContextController';
+import { useOffersContext } from '../../context/OffersContextController';
 import Map from '../ui/Map';
 import OfferMarker from './OfferMarker';
 
 function OfferMap({ offer, hidePopups = false }) {
   const offersContext = useOffersContext();
-  const list = offersContext.offersList.length ? offersContext.offersList : [offer];
+  const list = offersContext.offersList.length ? offersContext.offersList : offer ? [offer] : [];
   const markers = list.map((entity) =>
     entity.locations.map((location) => (
       <OfferMarker

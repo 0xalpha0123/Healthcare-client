@@ -1,4 +1,4 @@
-import { FetchClient } from '../../src/context/clientContextController/ClientContextController';
+import { FetchClient } from '../../src/context/ClientContextController';
 import { getCompanyByIdAction } from '../../src/api/actions/companyActions';
 import CompanyDetails from '../../src/components/CompanyDetails';
 import CompanyOfferCard from '../../src/components/CompanyDetails/CompanyOfferCard';
@@ -25,9 +25,7 @@ const Company = ({ company }) => {
 };
 
 export const getServerSideProps = async (ctx) => {
-  const { payload } = await FetchClient.query(
-    getCompanyByIdAction({ id: ctx.query.companyId })
-  );
+  const { payload } = await FetchClient.query(getCompanyByIdAction({ id: ctx.query.companyId }));
 
   return {
     props: {

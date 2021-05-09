@@ -1,5 +1,5 @@
-import React, { createContext, useContext, useState } from "react";
-import { FiltersStates } from "../states";
+import React, { createContext, useContext, useState } from 'react';
+import { FiltersStates } from './states';
 
 const OffersContext = createContext({
   offersList: [],

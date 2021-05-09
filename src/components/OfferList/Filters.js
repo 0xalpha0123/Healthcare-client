@@ -1,4 +1,4 @@
-import { useOffersContext } from '../../context/offersContextController/OffersContextController';
+import { useOffersContext } from '../../context/OffersContextController';
 import { useEffect, useState } from 'react';
 import { useQuery } from 'react-fetching-library';
 import { getOffersAction } from '../../api/actions/offerActions';
@@ -40,12 +40,6 @@ const Filters = ({ filtersData }) => {
 
   useEffect(() => {
     (async () => {
-      await Promise.all([loadOffers()]);
-    })();
-  }, []);
-
-  useEffect(() => {
-    (async () => {
       if (selectedProfession) {
         setSpecializationsList(filtersData.specializations[selectedProfession] || []);
         setSelectedSpecialization(null);
@@ -69,8 +63,9 @@ const Filters = ({ filtersData }) => {
   return (
     <Card className="m-auto">
       <form
-        className="flex flex-wrap md:justify-center"
-        onSubmit={(_) => {
+        className="flex flex-wrap justify-center md:justify-start"
+        onSubmit={(e) => {
+          e.preventDefault();
           loadOffers();
         }}
         onKeyDown={(event) => {
@@ -86,6 +81,7 @@ const Filters = ({ filtersData }) => {
             placeholder={t('search')}
             label={t('title')}
             onClear
+            onBlur={loadOffers}
           />
         </div>
         <div className="w-full sm: w-1/2 md:w-2/12 p-2">
@@ -121,17 +117,19 @@ const Filters = ({ filtersData }) => {
             <div className="w-1/2">
               <Input
                 value={salaryFrom}
-                placeholder={t('to')}
+                placeholder={t('from')}
                 setValue={setSalaryFrom}
                 type="number"
+                onBlur={loadOffers}
               />
             </div>
             <div className="w-1/2">
               <Input
                 value={salaryTo}
-                placeholder={t('from')}
+                placeholder={t('to')}
                 setValue={setSalaryTo}
                 type="number"
+                onBlur={loadOffers}
               />
             </div>
           </div>

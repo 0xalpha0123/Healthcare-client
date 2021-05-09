@@ -10,6 +10,7 @@ function Input({
   onClear,
   className = '',
   error = '',
+  onBlur,
 }) {
   return (
     <div className={className}>
@@ -33,6 +34,7 @@ function Input({
         value={value}
         type={type}
         onChange={(e) => setValue(e.target.value)}
+        onBlur={onBlur}
       />
       {error && <Alert>{error}</Alert>}
     </div>

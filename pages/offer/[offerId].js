@@ -1,7 +1,7 @@
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import dynamic from 'next/dynamic';
 
-import { FetchClient } from '../../src/context/clientContextController/ClientContextController';
+import { FetchClient } from '../../src/context/ClientContextController';
 import { getOfferAction } from '../../src/api/actions/offerActions';
 import OfferDetails from '../../src/components/OfferDetails/index.js';
 
