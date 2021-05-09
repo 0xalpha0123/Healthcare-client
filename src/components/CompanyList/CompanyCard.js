@@ -1,6 +1,8 @@
 import { useRouter } from 'next/router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronRight, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
+import { faChevronRight, faClinicMedical, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
+import Card from '../ui/Card';
+import IconInfo from '../OfferList/IconInfo';
 
 const CompanyCard = ({ company }) => {
   const router = useRouter();
@@ -9,42 +11,35 @@ const CompanyCard = ({ company }) => {
     router.push(`/companies/${id}`);
   };
 
-  const companyDescription = () => {
-    const descriptionMaxLenght = 170;
-
-    return company.description.length > descriptionMaxLenght
-      ? company.description.substr(0, descriptionMaxLenght - 1) + '...'
-      : company.description;
-  };
-
   return (
-    <div
-      key={`company-${company.id}`}
-      onClick={() => goToCompany(company.id)}
-      className="flex w-full min-h-32 p-4 rounded-lg shadow-md bg-white my-1 cursor-pointer box-border border border-gray-100 hover:border-gray-300"
-    >
-      <div className="flex justify-center w-20 p-1">
-        <img className="self-center max-w-full max-h-full" src={company.logo_file_path} />
-      </div>
-      <div className="flex flex-grow justify-between">
-        <div className="flex flex-col w-1/2 ml-8">
-          <p className="text-2xl">{company.name}</p>
-          <hr className="my-2" />
-          <p className="text-xs">{companyDescription()}</p>
+    <div onClick={goToCompany} className="cursor-pointer relative p-2">
+      <Card className="w-full " style={{ padding: 0, height: 300 }}>
+        <div
+          style={{
+            backgroundImage: company.photos.length ? `url(${company.photos[0].file_path})` : '',
+            backgroundSize: 'cover',
+            height: '60%',
+          }}
+        ></div>
+        <div className="absolute w-full flex justify-center top-40">
+          <Card className="flex justify-center items-center">
+            <IconInfo icon={faClinicMedical} label={company.name} size="1x"></IconInfo>
+          </Card>
         </div>
-        <div className="flex flex-col justify-center">
-          {company.locations.map((location, key) => (
-            <p className="px-1 text-sm text-gray-600" key={key}>
-              <FontAwesomeIcon icon={faMapMarkerAlt} size={'xs'} /> <span>{location.street}, </span>
-              <span>{location.postcode} </span>
-              <span>{location.city}</span>
-            </p>
+        <div className="mt-10 px-4">
+          {company.locations.map(({ city, street, building_number }, key) => (
+            <div className="my-2" key={key}>
+              {
+                <IconInfo
+                  icon={faMapMarkerAlt}
+                  label={`${city}, ${street} ${building_number}`}
+                  size="sm"
+                />
+              }
+            </div>
           ))}
         </div>
-        <div className="flex items-center mx-2 text-gray-300">
-          <FontAwesomeIcon icon={faChevronRight} size={'lg'} />
-        </div>
-      </div>
+      </Card>
     </div>
   );
 };

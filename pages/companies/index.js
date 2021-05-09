@@ -21,7 +21,7 @@ const Companies = ({ companies, locations }) => {
         <div className="flex w-full md:h-5/6 pt-4 md:pt-0">
           <CompanyList />
           <div className="w-full hidden md:block">
-            <CompanyMap companies={companies} />
+            <CompanyMap />
           </div>
         </div>
       </div>

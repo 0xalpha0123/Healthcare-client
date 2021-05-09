@@ -4,11 +4,9 @@ import Card from './Card';
 
 function NoResults({ message }) {
   return (
-    <Card>
-      {/* <div> */}
+    <Card className="w-full h-16">
       <FontAwesomeIcon icon={faSadTear} size="lg" className="mr-5" />
       {message}
-      {/* </div> */}
     </Card>
   );
 }
