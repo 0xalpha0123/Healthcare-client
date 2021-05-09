@@ -7,8 +7,8 @@ import IconInfo from '../OfferList/IconInfo';
 const CompanyCard = ({ company }) => {
   const router = useRouter();
 
-  const goToCompany = (id) => {
-    router.push(`/companies/${id}`);
+  const goToCompany = (_) => {
+    router.push(`/companies/${company.id}`);
   };
 
   return (

@@ -1,23 +1,19 @@
-import CompanyDetailsDescriptionSection from './CompanyDetailsDescriptionSection';
-import CompanyDetailsGallerySection from './CompanyDetailsGallerySection';
-import CompanyDetailsHeaderSection from './CompanyDetailsHeaderSection';
-
+import CompanyCard from '../CompanyList/CompanyCard';
+import classes from '../OfferList/custom.module.css';
+import CompanyDescription from './CompanyDescription';
+import CompanyGallery from './CompanyGallery';
 const CompanyDetails = ({ company }) => {
-  if (company) {
-    return (
-      <div>
-        <CompanyDetailsHeaderSection company={company} />
-        <CompanyDetailsDescriptionSection description={company.description} />
-        {company.photos.length > 0 ? (
-          <CompanyDetailsGallerySection photos={company.photos} />
-        ) : (
-          ''
-        )}
+  return (
+    <div className="h-full flex flex-col">
+      <div className="md:w-1/2 m-auto">
+        <CompanyCard company={company} />
       </div>
-    );
-  }
-
-  return '';
+      <div className={classes.list}>
+        <CompanyDescription description={company.description} />
+        <CompanyGallery photos={company.photos} />
+      </div>
+    </div>
+  );
 };
 
 export default CompanyDetails;

@@ -1,34 +1,27 @@
 import { FetchClient } from '../../src/context/ClientContextController';
 import { getCompanyByIdAction } from '../../src/api/actions/companyActions';
 import CompanyDetails from '../../src/components/CompanyDetails';
-import CompanyOfferCard from '../../src/components/CompanyDetails/CompanyOfferCard';
+import CompanyOffers from '../../src/components/CompanyDetails/CompanyOffers';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 const Company = ({ company }) => {
-  if (company) {
-    return (
-      <div className="flex w-full">
-        <div className="flex flex-col p-5 bg-gray-100 w-full h-full overflow-scroll">
-          <CompanyDetails company={company} />
-        </div>
-        <div className="w-full shadow-mg overflow-scroll">
-          <div className="flex p-4 flex-col">
-            {company.offers.map((offer) => (
-              <CompanyOfferCard offer={offer} />
-            ))}
-          </div>
-        </div>
+  return (
+    <div className="flex flex-col md:flex-row w-full h-full">
+      <div className="md:h-full w-full">
+        <CompanyDetails company={company} />
       </div>
-    );
-  }
-
-  return '';
+      <div className="md:h-full w-full">
+        <CompanyOffers offers={company.offers} />
+      </div>
+    </div>
+  );
 };
 
 export const getServerSideProps = async (ctx) => {
   const { payload } = await FetchClient.query(getCompanyByIdAction({ id: ctx.query.companyId }));
-
   return {
     props: {
+      ...(await serverSideTranslations(ctx.locale, ['common'])),
       company: payload,
     },
   };
