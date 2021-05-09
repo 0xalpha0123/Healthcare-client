@@ -1,18 +1,26 @@
+import { useEffect } from 'react';
+import { useCompaniesContext } from '../../context/CompaniesContextController';
 import Map from '../ui/Map';
 import CompanyMarker from './CompanyMarker';
 
-function CompanyMap({ companies }) {
-  const markers = companies.map((entity) =>
+function CompanyMap({ company, hidePopups }) {
+  const companiesContext = useCompaniesContext();
+
+  const list = companiesContext.companiesList.length
+    ? companiesContext.companiesList
+    : company
+    ? [company]
+    : [];
+  const markers = list.map((entity) =>
     entity.locations.map((location) => (
       <CompanyMarker
         key={`marker-company-${entity.id}-${location.id}`}
         location={location}
-        company={entity}
+        company={!hidePopups && entity}
       />
     ))
   );
-
-  const bounds = companies.map((entity) =>
+  let bounds = list.map((entity) =>
     entity.locations.map((location) => [location.coordinates.x, location.coordinates.y])
   );
 
