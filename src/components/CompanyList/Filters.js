@@ -60,7 +60,7 @@ const Filters = ({ locations }) => {
         <div className="w-full sm: w-1/2 md:w-2/12 p-2">
           <Select
             value={selectedLocation}
-            onClear={true}
+            onClear
             setValue={setSelectedLocation}
             label={t('location')}
             options={locationsList.map(({ city }) => ({ label: city, value: city }))}

@@ -87,7 +87,7 @@ const Filters = ({ filtersData }) => {
         <div className="w-full sm: w-1/2 md:w-2/12 p-2">
           <Select
             value={selectedLocation}
-            onClear={true}
+            onClear
             setValue={setSelectedLocation}
             label={t('location')}
             options={locationsList.map(({ city }) => ({ label: city, value: city }))}
@@ -96,7 +96,7 @@ const Filters = ({ filtersData }) => {
         <div className="w-full sm: w-1/2 md:w-2/12 p-2">
           <Select
             value={selectedProfession}
-            onClear={true}
+            onClear
             setValue={setSelectedProfession}
             label={t('profession')}
             options={professionsList.map(({ id, name }) => ({ label: name, value: id }))}
@@ -105,7 +105,7 @@ const Filters = ({ filtersData }) => {
         <div className="w-full sm: w-1/2 md:w-2/12 p-2">
           <Select
             value={selectedSpecialization}
-            onClear={true}
+            onClear
             setValue={setSelectedSpecialization}
             label={t('specialization')}
             options={specializationsList.map(({ id, name }) => ({ label: name, value: id }))}
