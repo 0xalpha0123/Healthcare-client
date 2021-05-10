@@ -2,20 +2,18 @@ import ApplySection from './ApplySection';
 import CompanySection from './CompanySection';
 import HeaderSection from './HeaderSection';
 import OfferSection from './OfferSection';
+import classes from '../OfferList/custom.module.css';
+import OfferCard from '../OfferList/OfferCard';
 
 const OfferDetails = ({ offer }) => {
-  if (offer) {
-    return (
-      <div className="flex flex-col p-5 bg-gray-100 h-full w-full overflow-scroll">
-        <HeaderSection offer={offer} />
-        <OfferSection description={offer.description} />
-        <CompanySection description={offer.company.description} />
-        <ApplySection />
-      </div>
-    );
-  }
-
-  return '';
+  return (
+    <div className={classes.list}>
+      <OfferCard offer={offer} type="static" />
+      <OfferSection description={offer.description} />
+      <CompanySection description={offer.company.description} />
+      <ApplySection />
+    </div>
+  );
 };
 
 export default OfferDetails;

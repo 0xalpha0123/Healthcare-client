@@ -1,7 +1,11 @@
-export function getCompaniesAction() {
+export function getCompaniesAction({ city, name }) {
   return {
     method: 'GET',
     endpoint: '/companies',
+    query: {
+      name,
+      city,
+    },
   };
 }
 

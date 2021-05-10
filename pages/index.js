@@ -1,29 +1,32 @@
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import OfferList from '../src/components/OfferList';
-import { OffersContextController } from '../src/context/offersContextController/OffersContextController';
-import { FetchClient } from '../src/context/clientContextController/ClientContextController';
+import dynamic from 'next/dynamic';
+import { OffersContextController } from '../src/context/OffersContextController';
+import { FetchClient } from '../src/context/ClientContextController';
 import {
   getOffersAction,
   getProfessionsAction,
   getSpecializationsAction,
 } from '../src/api/actions/offerActions';
 import { getUniqueLocations } from '../src/api/actions/companyActions';
-import dynamic from 'next/dynamic';
-
-import Filters from '../src/components/ui/layout/Filters';
+import OfferList from '../src/components/OfferList';
+import Filters from '../src/components/OfferList/Filters';
 
 export default function Home({ offers, filtersData }) {
-  const Map = dynamic(() => import('../src/components/ui/layout/Map/'), {
+  const OfferMap = dynamic(() => import('../src/components/OfferMap'), {
     ssr: false,
   });
 
   return (
     <OffersContextController offers={offers}>
-      <div className="flex flex-col w-full">
-        <Filters filtersData={filtersData} />
-        <div className="flex w-full overflow-hidden">
+      <div className="h-full">
+        <div className="md:h-1/6">
+          <Filters filtersData={filtersData} />
+        </div>
+        <div className="flex w-full md:h-5/6 pt-4 md:pt-0">
           <OfferList filtersData={filtersData} />
-          <Map data={offers} type="offer" />
+          <div className="w-full hidden md:block">
+            <OfferMap />
+          </div>
         </div>
       </div>
     </OffersContextController>
@@ -31,18 +34,10 @@ export default function Home({ offers, filtersData }) {
 }
 
 export const getServerSideProps = async (ctx) => {
-  const { payload: offersPayload } = await FetchClient.query(
-    getOffersAction({})
-  );
-  const { payload: specializationsPayload } = await FetchClient.query(
-    getSpecializationsAction({})
-  );
-  const { payload: locationsPayload } = await FetchClient.query(
-    getUniqueLocations({})
-  );
-  const { payload: professionsPayload } = await FetchClient.query(
-    getProfessionsAction({})
-  );
+  const { payload: offersPayload } = await FetchClient.query(getOffersAction({}));
+  const { payload: specializationsPayload } = await FetchClient.query(getSpecializationsAction({}));
+  const { payload: locationsPayload } = await FetchClient.query(getUniqueLocations({}));
+  const { payload: professionsPayload } = await FetchClient.query(getProfessionsAction({}));
 
   const groupBy = (key) => (array) =>
     array.reduce((objectsByKeyValue, obj) => {
