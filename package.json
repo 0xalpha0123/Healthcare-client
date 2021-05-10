@@ -10,9 +10,9 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.35",
+    "@fortawesome/free-regular-svg-icons": "^5.15.3",
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "@fortawesome/react-fontawesome": "^0.1.14",
-    "html-react-parser": "^1.2.6",
     "http-status-codes": "^2.1.4",
     "isomorphic-unfetch": "^3.1.0",
     "leaflet": "^1.7.1",
@@ -24,9 +24,7 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-fetching-library": "^1.7.6",
-    "react-leaflet": "^3.1.0",
-    "react-slick": "^0.28.1",
-    "slick-carousel": "^1.8.1"
+    "react-leaflet": "^3.1.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.2.5",
