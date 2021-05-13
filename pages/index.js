@@ -47,15 +47,15 @@ export const getServerSideProps = async (ctx) => {
     }, {});
 
   const filtersData = {
-    specializations: groupBy('profession_id')(specializationsPayload),
-    professions: professionsPayload,
-    locations: locationsPayload,
+    specializations: groupBy('profession_id')(specializationsPayload || []) | {},
+    professions: professionsPayload || [],
+    locations: locationsPayload || [],
   };
 
   return {
     props: {
       ...(await serverSideTranslations(ctx.locale, ['common'])),
-      offers: offersPayload,
+      offers: offersPayload || [],
       filtersData,
     },
   };
