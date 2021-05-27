@@ -24,9 +24,7 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-fetching-library": "^1.7.6",
-    "react-leaflet": "^3.1.0"
-  },
-  "devDependencies": {
+    "react-leaflet": "^3.1.0",
     "autoprefixer": "^10.2.5",
     "postcss": "^8.2.10",
     "prettier": "^2.2.1",
