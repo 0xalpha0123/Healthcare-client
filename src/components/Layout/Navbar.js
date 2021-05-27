@@ -10,7 +10,7 @@ const Navbar = () => {
     <nav className="flex justify-center md:justify-between items-center p-10 border-b border-grey flex-wrap md:h-navbar">
       <div className="w-full md:max-w-xs flex justify-center">
         <Link href="/">
-          <img src="/img/logo.svg" className="cursor-pointer" />
+          <img src="/assets/logo.svg" className="cursor-pointer" />
         </Link>
       </div>
       <div className="flex font-semibold mt-8 md:mt-0">
