@@ -18,10 +18,8 @@ services:
       context: .
       dockerfile: Dockerfile
     restart: always
-    command: npm run start
+    command: sh -c "npm run build && npm run start"
     volumes:
       - ./:/usr/src/app
-      - /usr/src/app/node_modules
-      - /usr/src/app/.next
     ports:
       - "3000:3000"
