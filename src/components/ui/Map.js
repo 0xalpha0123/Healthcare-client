@@ -13,7 +13,7 @@ const Map = ({ markers, bounds }) => {
   return (
     <div className="w-full h-full">
       <MapContainer
-        bounds={bounds || defaultBounds}
+        bounds={bounds && bounds.length ? bounds : defaultBounds}
         boundsOptions={{ padding: [25, 25] }}
         scrollWheelZoom={true}
         style={{ height: '100%', width: '100%' }}
