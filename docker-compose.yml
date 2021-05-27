@@ -7,6 +7,18 @@ services:
       dockerfile: Dockerfile
     container_name: dev
     restart: always
+    command: npm run start:dev
+    volumes:
+      - ./:/usr/src/app
+    ports:
+      - "3000:3000"
+  prod:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: dev
+    restart: always
+    command: npm run start
     volumes:
       - ./:/usr/src/app
     ports:
