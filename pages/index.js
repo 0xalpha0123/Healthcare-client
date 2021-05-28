@@ -47,7 +47,7 @@ export const getServerSideProps = async (ctx) => {
     }, {});
 
   const filtersData = {
-    specializations: groupBy('profession_id')(specializationsPayload || []) | {},
+    specializations: groupBy('profession_id')(specializationsPayload || []) || {},
     professions: professionsPayload || [],
     locations: locationsPayload || [],
   };
